@@ -50,6 +50,17 @@ nav a:hover { color: inherit; }
     gap: 48px !important;
     margin-bottom: 44px !important;
   }
+
+  /* Hero sections are bottom-aligned on desktop. On mobile the eyebrow/title/
+     description wrap to many more lines and nearly fill the hero, so bottom
+     alignment shoves the top of the content up under the fixed 74px nav.
+     Top-align on mobile with padding that clears the nav so the content flows
+     downward and the hero grows to fit (min-height, not fixed height). */
+  [data-hero] {
+    justify-content: flex-start !important;
+    padding-top: 104px !important;
+    padding-bottom: 56px !important;
+  }
 }
 
 /* ================= narrow: viewport < 560px ================= */
