@@ -25,7 +25,7 @@ input:focus,textarea:focus{outline:none;border-color:#3F5CAA!important}
 </head>
 <body>
 <div id="dc-root"><div class="sc-host"><div style="position: relative; background: rgb(244, 235, 225);"><nav style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 300; height: 74px; display: flex; align-items: center; justify-content: space-between; padding: 0px 40px; transition: background 0.3s, backdrop-filter 0.3s; background: linear-gradient(rgba(8, 15, 30, 0.8), rgba(8, 15, 30, 0.35) 60%, transparent);">
-  <a href="index.html" aria-label="Hope Church Winchester — home" style="display: flex; align-items: center;"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height: 26px; width: auto;"></a>
+  <a href="index.html" aria-label="Hope Church Winchester — home" style="display: flex; align-items: center;"><picture><source type="image/webp" srcset="assets/logo-white.webp"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height: 26px; width: auto;"></picture></a>
   <div data-navlinks="" style="display: flex; gap: 30px;">
     <a href="new-here.html" style="color: rgba(255, 255, 255, 0.72); font-family: Inter; font-size: 16px;">New Here</a>
     <a href="sunday.html" style="color: rgba(255, 255, 255, 0.72); font-family: Inter; font-size: 16px;">Sunday</a>
@@ -49,7 +49,7 @@ input:focus,textarea:focus{outline:none;border-color:#3F5CAA!important}
   <a href="about.html" style="font-family: Inter; font-size: 22px; color: rgba(255, 255, 255, 0.8); padding: 13px 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">About</a>
   <a href="teaching.html" style="font-family: Inter; font-size: 22px; color: rgba(255, 255, 255, 0.8); padding: 13px 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">Teaching</a>
   <a href="#top" style="font-family: Inter; font-size: 22px; color: rgb(255, 255, 255); padding: 13px 0px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">Contact</a></div><div id="top"></div><section style="position: relative; min-height: 74vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden;">
-  <div data-hero-bg="" style="position: absolute; inset: -8% 0px; background-image: url(&quot;assets/contact-hero.jpg&quot;); background-size: cover; background-position: center 30%;"></div>
+  <div data-hero-bg="" style="position: absolute; inset: -8% 0px; background-image: url('assets/contact-hero.jpg'); background-image: image-set(url('assets/contact-hero.webp') type('image/webp'), url('assets/contact-hero.jpg') type('image/jpeg')); background-size: cover; background-position: center 30%;"></div>
   <div style="position: absolute; inset: 0px; background: linear-gradient(to right, rgba(8, 15, 30, 0.82), rgba(8, 15, 30, 0.35) 60%, rgba(8, 15, 30, 0.15));"></div>
   <div style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(8, 15, 30, 0.7), transparent 45%);"></div>
   <div style="position: relative; max-width: 1280px; width: 100%; margin: 0px auto; padding: 0px 40px 8vh;">
@@ -110,14 +110,14 @@ input:focus,textarea:focus{outline:none;border-color:#3F5CAA!important}
       </div>
     </div>
     <a href="https://www.google.com/maps/place/Hope+Church+Winchester/@51.0635762,-1.3142732,17z/data=!3m1!4b1!4m6!3m5!1s0x48740d8a76c85c7b:0xb887a379c15b31ec!8m2!3d51.0635762!4d-1.3116929!16s%2Fg%2F1wd3vj0l?entry=ttu&amp;g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" data-reveal="" class="lift" style="position: relative; border-radius: 20px; overflow: hidden; display: block; min-height: 420px; opacity: 1; transform: none;">
-      <img src="assets/middle-brook-centre.jpg" alt="Middle Brook Centre" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0px;">
+      <picture><source type="image/webp" srcset="assets/middle-brook-centre.webp"><img src="assets/middle-brook-centre.jpg" alt="Middle Brook Centre" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0px;" loading="lazy" decoding="async"></picture>
       <div style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(8, 15, 30, 0.8), transparent 55%);"></div>
       <div style="position: absolute; left: 26px; bottom: 24px; display: flex; align-items: center; gap: 10px; background: rgb(255, 255, 255); padding: 13px 24px; border-radius: 999px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0D1B3E" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span style="font-family: Inter; font-size: 15px; font-weight: 600; color: rgb(13, 27, 62);">Get directions</span></div>
     </a>
   </div></section><section style="background: rgb(244, 235, 225); padding: clamp(72px, 10vw, 120px) 40px;">
   <div data-splitgrid="" style="max-width: 1280px; margin: 0px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
     <div data-reveal="" class="lift" style="border-radius: 20px; overflow: hidden; box-shadow: rgba(13, 27, 62, 0.5) 0px 24px 60px -28px; opacity: 1; transform: none;">
-      <img src="assets/connect-point.jpg" alt="The Connect Point on a Sunday" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3;">
+      <picture><source type="image/webp" srcset="assets/connect-point.webp"><img src="assets/connect-point.jpg" alt="The Connect Point on a Sunday" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3;" loading="lazy" decoding="async"></picture>
     </div>
     <div data-reveal="" style="opacity: 1; transform: none;">
       <div style="font-family: Inter; font-size: 15px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(63, 92, 170); margin-bottom: 18px;">On Sunday</div>
@@ -138,12 +138,12 @@ input:focus,textarea:focus{outline:none;border-color:#3F5CAA!important}
       <a href="https://www.google.com/maps/place/Hope+Church+Winchester/@51.0635762,-1.3142732,17z/data=!3m1!4b1!4m6!3m5!1s0x48740d8a76c85c7b:0xb887a379c15b31ec!8m2!3d51.0635762!4d-1.3116929!16s%2Fg%2F1wd3vj0l?entry=ttu&amp;g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="lift" style="display: inline-block; background: rgb(255, 255, 255); color: rgb(13, 27, 62); padding: 16px 34px; border-radius: 999px; font-family: Inter; font-size: 17px; font-weight: 600;">Get directions</a>
     </div>
     <div data-reveal="" class="lift" style="order: 1; border-radius: 20px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.5) 0px 24px 60px -28px; opacity: 1; transform: none;">
-      <img src="assets/contact-phone.jpg" alt="Answering calls at the office" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3;">
+      <picture><source type="image/webp" srcset="assets/contact-phone.webp"><img src="assets/contact-phone.jpg" alt="Answering calls at the office" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3;" loading="lazy" decoding="async"></picture>
     </div>
   </div></section><section style="background: rgb(244, 235, 225); padding: clamp(72px, 10vw, 120px) 40px;">
   <div data-splitgrid="" style="max-width: 1280px; margin: 0px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
     <a href="https://www.middlebrookcentre.org/" target="_blank" rel="noopener noreferrer" data-reveal="" class="lift" style="border-radius: 20px; overflow: hidden; box-shadow: rgba(13, 27, 62, 0.5) 0px 24px 60px -28px; min-height: 340px; position: relative; opacity: 1; transform: none;">
-      <img src="assets/middle-brook-centre.jpg" alt="The Middle Brook Centre in central Winchester" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0px;">
+      <picture><source type="image/webp" srcset="assets/middle-brook-centre.webp"><img src="assets/middle-brook-centre.jpg" alt="The Middle Brook Centre in central Winchester" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0px;" loading="lazy" decoding="async"></picture>
     </a>
     <div data-reveal="" style="opacity: 1; transform: none;">
       <div style="font-family: Inter; font-size: 15px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(63, 92, 170); margin-bottom: 20px;">Our building</div>
@@ -176,7 +176,7 @@ input:focus,textarea:focus{outline:none;border-color:#3F5CAA!important}
   <div style="max-width: 1280px; margin: 0px auto;">
     <div data-footgrid="" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 44px;">
       <div data-footaddr="" style="grid-column: auto;">
-        <img src="assets/logo-white.png" alt="Hope Church Winchester" style="height: 26px; width: auto; margin-bottom: 20px;">
+        <picture><source type="image/webp" srcset="assets/logo-white.webp"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height: 26px; width: auto; margin-bottom: 20px;"></picture>
         <div style="font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.55); line-height: 1.9; margin-bottom: 16px;">Middle Brook Centre<br>Middle Brook Street<br>Winchester, SO23 8DQ</div>
         <div style="font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.55); line-height: 1.9;">office@hopewinchester.org<br>01962 840800<br>Mon–Fri 9am–5pm</div>
       </div>
@@ -184,7 +184,7 @@ input:focus,textarea:focus{outline:none;border-color:#3F5CAA!important}
       <div><div style="font-family: Inter; font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, 0.32); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px;">Learn</div><a href="about.html" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6); margin-bottom: 11px;">About Us</a><a href="teaching.html" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6); margin-bottom: 11px;">Teaching</a><a href="https://hopeinactionwinchester.squarespace.com/blog" target="_blank" rel="noopener noreferrer" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6);">Blog</a></div>
       <div><div style="font-family: Inter; font-size: 13px; font-weight: 600; color: rgba(255, 255, 255, 0.32); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px;">Connect</div><a href="#top" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6); margin-bottom: 11px;">Contact</a><a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6); margin-bottom: 11px;">Give</a><a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6); margin-bottom: 11px;">ChurchSuite</a><a href="https://www.middlebrookcentre.org" target="_blank" rel="noopener noreferrer" style="display: block; font-family: Inter; font-size: 16px; color: rgba(255, 255, 255, 0.6);">Room Hire</a></div>
     </div>
-    <div data-footpartners="" style="display: flex; justify-content: flex-end; align-items: center; gap: 24px; margin-bottom: 32px;"><img src="assets/partners/commission-white.png" alt="Commission" style="height: 42px; width: auto; opacity: 0.85;"><img src="assets/partners/ea-white.png" alt="Evangelical Alliance" style="height: 18px; width: auto; opacity: 0.85;"></div>
+    <div data-footpartners="" style="display: flex; justify-content: flex-end; align-items: center; gap: 24px; margin-bottom: 32px;"><picture><source type="image/webp" srcset="assets/partners/commission-white.webp"><img src="assets/partners/commission-white.png" alt="Commission" style="height: 42px; width: auto; opacity: 0.85;" loading="lazy" decoding="async"></picture><picture><source type="image/webp" srcset="assets/partners/ea-white.webp"><img src="assets/partners/ea-white.png" alt="Evangelical Alliance" style="height: 18px; width: auto; opacity: 0.85;" loading="lazy" decoding="async"></picture></div>
     <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.06);">
       <div style="font-family: Inter; font-size: 15px; color: rgba(255, 255, 255, 0.4); display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">© Hope Church Winchester · Charity 1128609 · Company 6804892<a href="https://hopewinchester.sharepoint.com/:b:/s/HCWPolicies/IQAGnuNtyeoyQZRm6KLZ4g7nAdqSUT8G8u1n-_71NCfshbo?e=oFwDAn" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.55); font-size: 15px;">Safeguarding Policy</a></div>
       <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 18px;"><div style="display: flex; gap: 16px;">
