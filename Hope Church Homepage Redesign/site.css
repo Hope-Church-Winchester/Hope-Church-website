@@ -1,0 +1,67 @@
+/* Hope Church Winchester — shared site styles.
+   The page markup carries its full desktop layout as inline styles (baked in
+   when the pages were converted from the original design-component source).
+   This file only needs to (a) provide a base reset and (b) reproduce the
+   responsive breakpoints that the old runtime applied in JavaScript.
+
+   Breakpoints mirror the original applyResponsive():
+     mobile  = viewport <  1080px
+     narrow  = viewport <   560px
+   Media-query rules use !important so they override the inline desktop styles. */
+
+/* ---- base reset (was injected by the runtime) ---- */
+html, body { margin: 0; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Neue Montreal", "Inter", system-ui, sans-serif;
+  background: #0D1B3E;
+  color: #232220;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: #3F5CAA; text-decoration: none; }
+a:hover { color: #0D1B3E; }
+::selection { background: #3F5CAA; color: #fff; }
+#dc-root, #dc-root > .sc-host { min-height: 100%; }
+
+/* Nav CTAs use light-on-dark link colours — don't let the global a:hover
+   override the button text colour set inline. */
+[data-navctas] a:hover, [data-navlinks] a:hover, [data-menu] a:hover,
+nav a:hover { color: inherit; }
+
+/* ================= mobile: viewport < 1080px ================= */
+@media (max-width: 1079px) {
+  [data-navlinks] { display: none !important; }
+  [data-navctas]  { display: none !important; }
+  [data-hamburger] { display: inline-flex !important; }
+
+  [data-newsgrid] {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+    justify-items: center !important;
+  }
+  [data-grid2] { grid-template-columns: 1fr !important; }
+  [data-grid3] { grid-template-columns: 1fr !important; }
+  [data-grid4] { grid-template-columns: 1fr 1fr !important; }
+
+  [data-footgrid] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px !important;
+    margin-bottom: 44px !important;
+  }
+}
+
+/* ================= narrow: viewport < 560px ================= */
+@media (max-width: 559px) {
+  [data-grid4] { grid-template-columns: 1fr !important; }
+
+  [data-footgrid] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px 22px !important;
+    margin-bottom: 34px !important;
+  }
+  [data-footaddr] { grid-column: 1 / -1 !important; }
+  [data-foot] { padding: 46px 24px 28px !important; }
+  [data-footpartners] { justify-content: flex-start !important; }
+}
