@@ -25,6 +25,11 @@ a:hover { color: #0D1B3E; }
 ::selection { background: #3F5CAA; color: #fff; }
 #dc-root, #dc-root > .sc-host { min-height: 100%; }
 
+/* Hover "lift": buttons and cards tagged .lift rise slightly on hover. Defined
+   globally here so every page behaves the same (the homepage was missing it). */
+.lift { transition: transform .35s cubic-bezier(0.2,0,0,1), box-shadow .35s cubic-bezier(0.2,0,0,1); }
+.lift:hover { transform: translateY(-6px) !important; box-shadow: 0 18px 40px -18px rgba(13,27,62,0.45); }
+
 /* Nav CTAs use light-on-dark link colours — don't let the global a:hover
    override the button text colour set inline. */
 [data-navctas] a:hover, [data-navlinks] a:hover, [data-menu] a:hover,
