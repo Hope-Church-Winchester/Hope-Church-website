@@ -1,19 +1,12 @@
 # Hope Church Winchester — Website
 
-A 9-page marketing website for Hope Church Winchester, intended to replace the church's current site. This package is the **complete working source** for the site, ready to be version-controlled in GitHub and maintained with Claude Code.
+A 9-page static marketing website for Hope Church Winchester.
 
----
-
-## ⚠️ Read this first — the file format
-
-The pages are authored as **Design Components** (`*.dc.html`). Each one is a normal HTML document that, at runtime, is rendered by a small client-side runtime bundled in this project (`support.js`). They are **not** plain static HTML and they are **not** React/Vue source. You cannot simply drop a `.dc.html` file onto a web server and expect it to render — it needs `support.js` (and, for styling tokens, the `_ds/` bundle) loaded alongside it.
-
-This matters for how you take the project forward. See **Taking this to production** below.
-
-### How a `.dc.html` file is structured
-- An `<x-dc>…</x-dc>` block containing the **template** (markup with `{{ dotted.path }}` holes and control-flow tags like `<sc-for>` / `<sc-if>`).
-- A `<script type="text/x-dc" data-dc-script>` block containing a **logic class** (`class Component extends DCLogic { renderVals() { … } }`) that supplies the values the template interpolates and the responsive/interaction behaviour.
-- All styling is **inline** on the elements (no external stylesheets beyond the design-system tokens). Responsive behaviour is handled in each page's `applyResponsive()` method, which sets `grid-template-columns` etc. based on `window.innerWidth` breakpoints (`mobile < 1080px`, `narrow < 560px`).
+The pages are **plain, self-contained HTML** — no build step, no framework, no
+runtime. You can open them in any editor, host them on any static host, and
+serve them as-is. (They were originally authored as bespoke `.dc.html` "design
+components" that needed a client-side React/Babel runtime; that has been
+converted away — see *History* below.)
 
 ---
 
@@ -21,17 +14,18 @@ This matters for how you take the project forward. See **Taking this to producti
 
 | File | Purpose |
 |---|---|
-| `Hope Homepage.dc.html` | Landing page / site entry point |
-| `New Here.dc.html` | First-time visitor guide (what to expect, good to know, next steps) |
-| `Sunday.dc.html` | What Sundays are like (services, kids, getting here, FAQ) |
-| `Families.dc.html` | Families & children's ministry |
-| `What's On.dc.html` | Midweek groups, events and activities |
-| `About.dc.html` | Who we are, what we believe, leadership team |
-| `Teaching.dc.html` | Sermons, series archive, podcasts, worship music |
-| `Partners.dc.html` | Church family, local & global mission partners, blog |
-| `Contact.dc.html` | Contact details, location, directions, newsletter |
+| `index.html` | Landing page / site entry point |
+| `new-here.html` | First-time visitor guide |
+| `sunday.html` | What Sundays are like |
+| `families.html` | Families & children's ministry |
+| `whats-on.html` | Midweek groups, events and activities |
+| `about.html` | Who we are, what we believe, leadership team |
+| `teaching.html` | Sermons, series archive, podcasts, worship music |
+| `partners.html` | Church family, local & global mission partners, blog |
+| `contact.html` | Contact details, location, directions, newsletter |
 
-**Navigation:** every page has a shared top nav and footer that link to the others via relative links (e.g. `href="About.dc.html"`). The intended entry point is `Hope Homepage.dc.html`.
+Every page shares a top nav and footer that link to the others with plain
+relative links (e.g. `href="about.html"`).
 
 ---
 
@@ -39,100 +33,86 @@ This matters for how you take the project forward. See **Taking this to producti
 
 ```
 /
-├── *.dc.html                 # the 9 pages (above)
-├── support.js                # Design Component runtime (required to render the pages)
-├── image-slot.js             # drag-and-drop image placeholder web component
+├── index.html, *.html        # the 9 pages
+├── site.css                  # shared reset + responsive rules (media queries)
+├── site.js                   # shared interactions (mobile menu, nav-on-scroll,
+│                             #   hero parallax, scroll reveal) — progressive
+│                             #   enhancement; pages work fully without it
 ├── assets/                   # all photography and logos used by the site
 │   ├── partners/             #   partner / charity / mission logos
 │   ├── teaching/             #   sermon-series & teaching imagery
 │   └── team/                 #   leadership & welcome-team photos
-└── _ds/                      # Hope Church Winchester design-system bundle
-    └── hope-church-winchester-design-system-<id>/
-        ├── colors_and_type.css   # design tokens (colours, fonts) + @font-face
-        ├── fonts/                # Neue Montreal font files
-        └── _ds_bundle.js         # design-system component bundle
+└── _ds/                      # design-system bundle (Neue Montreal font files)
 ```
+
+### How the styling works
+Each page carries its **desktop layout as inline styles** (baked in during the
+conversion). `site.css` then does two things: a small base reset, and the
+**responsive breakpoints** via media queries keyed on `data-*` hooks
+(`data-grid2/3/4`, `data-footgrid`, `data-navlinks`, `data-hamburger`, …):
+
+- `mobile`  — viewport `< 1080px`
+- `narrow`  — viewport `< 560px`
+
+To adjust a responsive rule, edit `site.css`. To adjust content or the desktop
+look, edit the inline styles on the relevant page.
 
 ---
 
 ## Running it locally
 
-Because the pages load `support.js` and assets by relative path, serve the folder over HTTP (don't just `file://` open a page):
+Serve the folder over HTTP (relative asset paths don't work from `file://`):
 
 ```bash
 # from the project root
-npx serve .
-# or
 python3 -m http.server 8000
+# then visit http://localhost:8000/
 ```
-
-Then visit `http://localhost:8000/Hope%20Homepage.dc.html`.
-
-> Note: filenames contain spaces (e.g. `Hope Homepage.dc.html`, `What's On.dc.html`). For web hosting you will almost certainly want to rename these to hyphenated, lowercase names (`index.html`, `whats-on.html`, …) and update the nav/footer links accordingly. See below.
 
 ---
 
-## Design tokens
+## Hosting
 
-The full brand spec lives in `_ds/…/colors_and_type.css`. The site as built uses this working palette:
-
-**Core**
-- Deep navy (primary dark surface): `#0D1B3E`
-- Deeper navy (footer / step-downs): `#060D1E`, `#0A1430`
-- Panel navy (cards on dark): `#162040`, border `#1E2D50`
-- Soft cream (default light surface): `#F4EBE1`
-- White (body-text panels): `#FFFFFF`
-- Slate blue (accents, links, buttons): `#3F5CAA` (hover `#34518f`)
-- Light blue (accents on dark): `#A3C0E8`
-- Body text on light: `#5b5955` / charcoal `#232220`
-
-**Brand (from the design system — use for ministry sub-brands)**
-- Purple `#6028A7`, Blue `#044EFF`, Lavender `#CEDCF1`, Orange `#F36C41`, Green `#36A877`
-
-**Type**
-- Body: **Neue Montreal** (files in `_ds/…/fonts/`). The pages currently also reference `Inter` and `'Neue Montreal'` in font stacks — standardise on the licensed families when productionising.
-- Display / headings: the design system specifies **ED Nimpkish** (display, lowercase) and **PP Mori** (headings). These were **not** delivered and are substituted — see the design-system guide. Licensed files should be dropped into `_ds/…/fonts/` and the stacks updated.
-
-**Radii / shadows:** pills (`999px`) and `14–22px` card radii; single soft shadows, no coloured shadows. See the design-system guide for the full rules.
+The site is deployed to **GitHub Pages** by the workflow at
+`.github/workflows/deploy-pages.yml` (repo root), which publishes this folder on
+every push to `main`. Any static host works too (Netlify, Cloudflare Pages) —
+just serve this folder with `index.html` as the entry point.
 
 ---
 
 ## External links used across the site
-These point at the church's real services (open in a new tab). Keep them in sync if any change:
+These point at the church's real services (open in a new tab). Keep them in sync
+if any change:
 - ChurchSuite (giving, forms, events): `hopewinchester.churchsuite.com` / `.co.uk`
 - Newsletter signup: `hopewinchester.churchsuite.co.uk/embed/addressbook/form`
 - YouTube: `youtube.com/@HopeChurchWinchester`
 - Spotify / Apple Podcasts / SoundCloud (sermons)
 - Blog: `hopeinactionwinchester.squarespace.com/blog`
-- Facebook, Instagram
+- Facebook, Instagram (the Instagram feed on the homepage uses LightWidget)
 - Middle Brook Centre room hire; Google Maps directions; SharePoint safeguarding policy PDF
 
 ---
 
-## Taking this to production
-
-You have two realistic paths. **Decide this before building out the GitHub workflow.**
-
-### Path A — Convert to a plain static site (recommended for hosting)
-Recreate each page as a standard, self-contained HTML/CSS/JS file (no `support.js` runtime), then host on GitHub Pages / Netlify / Cloudflare Pages.
-- Use the `.dc.html` files as the **exact visual + content reference** — all the markup, copy, inline styles and imagery are here.
-- Move the per-page inline styles into a shared stylesheet, and reimplement the small amount of JS (sticky-nav state, mobile menu toggle, the `applyResponsive()` grid breakpoints, scroll-reveal) as ordinary scripts or CSS media queries.
-- Rename files to web-friendly names (`index.html`, `new-here.html`, `sunday.html`, `whats-on.html`, `about.html`, `teaching.html`, `families.html`, `partners.html`, `contact.html`) and update all nav/footer links.
-- Keep `assets/` and the fonts as-is.
-
-### Path B — Keep the Design Component format
-Commit the project as-is (including `support.js` and `_ds/`) and keep editing the `.dc.html` files. This preserves everything exactly but ties the site to this runtime, and hosting requires serving the runtime + components rather than plain pages. Only choose this if you intend to keep using the same rendering runtime.
-
-> **Recommendation:** For a public church website that a comms team will host and maintain, **Path A** is the better long-term choice — standard files, standard hosting, no dependency on a bespoke runtime.
+## Fonts
+- Body: **Neue Montreal** (files in `_ds/…/fonts/`, loaded via `@font-face`).
+- `Inter` is pulled from Google Fonts as a secondary/UI face.
+- The design spec also names *ED Nimpkish* and *PP Mori* for display/headings;
+  those were not delivered and are substituted. Drop licensed files into
+  `_ds/…/fonts/` and update the font stacks if/when they're available.
 
 ---
 
-## Suggested GitHub workflow
-1. Create the Hope Church comms GitHub account and a new (private to start) repo.
-2. Commit this project to it as the starting point / reference.
-3. With Claude Code, do the Path A conversion on a branch, review the rendered result, and merge.
-4. Enable GitHub Pages (or Netlify / Cloudflare Pages) and point the church domain at it.
-5. Make future content changes (text, images, events, sermon links) as small commits via Claude Code.
-
 ## Content / tone notes for future edits
-Copy is warm, plain-English and first-person ("we"/"you"), British spellings, no jargon or emoji. Times in British style (`10am`, `7.30pm`). Full voice guidance is in the design-system guide.
+Copy is warm, plain-English and first-person ("we"/"you"), British spellings, no
+jargon or emoji. Times in British style (`10am`, `7.30pm`).
+
+---
+
+## History
+This site was originally delivered as `.dc.html` design components rendered by a
+bundled `support.js` runtime that loaded React and Babel in the browser. It was
+converted to plain static HTML by rendering each page through that runtime once
+and capturing the final markup, then reimplementing the runtime's responsive
+behaviour and interactions as the small `site.css` / `site.js` above. The
+original design-component sources remain in the project's git history if ever
+needed for reference.
