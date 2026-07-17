@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Light.ttf") format("truetype");font-weight:300;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Neue Montreal","Inter",system-ui,sans-serif;background:#0D1B3E;color:#232220;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:#3F5CAA;text-decoration:none}
+a:hover{color:#0D1B3E}
+::selection{background:#3F5CAA;color:#fff}
+.lift{transition:transform .35s cubic-bezier(0.2,0,0,1),box-shadow .35s cubic-bezier(0.2,0,0,1)}
+.lift:hover{transform:translateY(-6px)!important;box-shadow:0 18px 40px -18px rgba(13,27,62,0.45)}
+</style>
+</helmet>
+<div style="position:relative;background:#F4EBE1">
+
+<nav style="{{ navStyle }}">
+  <a href="Hope Homepage.dc.html" style="display:flex;align-items:center" aria-label="Hope Church Winchester — home"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto"></a>
+  <div style="display:none;gap:30px" data-navlinks="">
+    <a href="New Here.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">New Here</a>
+    <a href="Sunday.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Sunday</a>
+    <a href="#top" style="color:#fff;font-family:Inter;font-size:16px;padding-bottom:3px;border-bottom:2px solid #3F5CAA">What's On</a>
+    <a href="Families.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Families</a>
+    <a href="About.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">About</a>
+    <a href="Teaching.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Teaching</a>
+    <a href="Contact.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Contact</a>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center" data-navctas="">
+    <a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="background:#fff;color:#0D1B3E;padding:10px 22px;border-radius:999px;font-family:Inter;font-size:15px;font-weight:600">Give</a>
+    <a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="background:transparent;color:#fff;padding:9px 20px;border-radius:999px;font-family:Inter;font-size:15px;font-weight:600;border:1.5px solid rgba(255,255,255,0.45)">ChurchSuite</a>
+  </div>
+  <button onClick="{{ toggleMenu }}" aria-label="Menu" data-hamburger="" style="display:none;background:transparent;border:none;cursor:pointer;padding:8px">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+  </button>
+</nav>
+
+<div style="{{ menuStyle }}">
+  <a href="New Here.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">New Here</a>
+  <a href="Sunday.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Sunday</a>
+  <a href="#top" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:#fff;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">What's On</a>
+  <a href="Families.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Families</a>
+  <a href="About.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">About</a>
+  <a href="Teaching.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Teaching</a>
+  <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Contact</a>
+</div>
+
+<div id="top"></div>
+
+<!-- ===== 1 · HERO ===== -->
+<section data-screen-label="What's On Hero" style="position:relative;min-height:82vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#0D1B3E">
+  <div data-hero-bg="" style="position:absolute;left:0;right:0;top:-8%;bottom:-8%;background-image:url('assets/whats-on.jpg');background-size:cover;background-position:center 42%;will-change:transform"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,15,30,0.94) 0%,rgba(8,15,30,0.5) 46%,rgba(8,15,30,0.18) 100%)"></div>
+  <div style="position:relative;max-width:1280px;width:100%;margin:0 auto;padding:0 40px 72px">
+    <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:22px">What's on</div>
+    <h1 style="font-family:Inter;font-weight:200;font-size:clamp(52px,8.4vw,116px);line-height:0.92;letter-spacing:-0.035em;color:#fff;margin:0">There's a place<br>for <span style="color:#A3C0E8">everyone.</span></h1>
+    <p style="max-width:640px;margin:30px 0 34px;font-size:22px;line-height:1.65;color:rgba(255,255,255,0.88)">From cafés and toddler groups to Bible study, football and community meals — discover all the ways you can find friendship, faith and purpose across the week.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#ministries" style="background:#fff;color:#0D1B3E;padding:16px 32px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600;display:inline-flex;align-items:center;gap:8px" style-hover="background:#A3C0E8">Explore what's on <span style="font-family:Inter">→</span></a>
+      <a href="#events" style="background:transparent;color:#fff;padding:15px 32px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600;border:1.5px solid rgba(255,255,255,0.45)" style-hover="background:rgba(255,255,255,0.1)">Upcoming events</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 · MINISTRIES ===== -->
+<section id="ministries" data-screen-label="Ministries" style="background:#F4EBE1;padding:clamp(72px,10vw,116px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="max-width:720px;margin-bottom:20px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#3F5CAA;margin-bottom:20px">Get involved</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(34px,4.6vw,60px);line-height:0.98;letter-spacing:-0.03em;color:#0D1B3E;margin-bottom:22px">Find your people</h2>
+      <p style="font-size:20px;line-height:1.7;color:#5b5955">Most of our groups meet at the Middle Brook Centre (MBC), our church building just off the High Street, though many also run in homes and around the city. Some run in term time only — check the calendar below for dates.</p>
+    </div>
+
+    <!-- Filter -->
+    <div data-reveal="" data-filterbar="" style="display:flex;flex-wrap:wrap;gap:10px;margin:40px 0 44px">
+      <button data-filter="all" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid #0D1B3E;background:#0D1B3E;color:#fff;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Everything</button>
+      <button data-filter="cafes" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid rgba(35,34,32,0.2);background:transparent;color:#232220;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Cafés &amp; welcome</button>
+      <button data-filter="families" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid rgba(35,34,32,0.2);background:transparent;color:#232220;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Families &amp; young people</button>
+      <button data-filter="groups" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid rgba(35,34,32,0.2);background:transparent;color:#232220;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Groups &amp; community</button>
+      <button data-filter="faith" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid rgba(35,34,32,0.2);background:transparent;color:#232220;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Growing in faith</button>
+      <button data-filter="sport" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid rgba(35,34,32,0.2);background:transparent;color:#232220;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Sport &amp; interests</button>
+      <button data-filter="support" style="font-family:Inter;font-size:16px;font-weight:600;padding:11px 22px;border-radius:999px;border:1.5px solid rgba(35,34,32,0.2);background:transparent;color:#232220;cursor:pointer;transition:all .2s cubic-bezier(0.2,0,0,1)">Support</button>
+    </div>
+
+    <!-- Grid -->
+    <div data-grid3="" data-mgrid="" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+
+      <!-- Warm Welcome Café -->
+      <a href="mailto:cath.bragg@hopewinchester.org?subject=Website%20enquiry%20about%20Warm%20Welcome%20Cafe" data-mcard="" data-cat="cafes" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/warm-welcome.jpg" alt="People reading and chatting at the Warm Welcome Café" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Mondays · 1–2.30pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Warm Welcome Café</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">A space for anyone who could do with a cup of tea and a chat. Join us for a gathering over coffee and cake.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- All Nations Café -->
+      <a href="https://www.instagram.com/all_nations_cafe_winchester/" target="_blank" rel="noopener noreferrer" data-mcard="" data-cat="cafes" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/all-nations-cafe.jpg" alt="Two young women chatting at All Nations Café" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Mondays · 7.30–9pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">All Nations Café</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Here from another country? Join us to meet new people, play games and practise English in a relaxed café space.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Learn more →</span>
+        </div>
+      </a>
+
+      <!-- Hope Street Café -->
+      <a href="mailto:nick.woodford@hopewinchester.org?subject=Website%20enquiry%20about%20Hope%20Street%20Cafe" data-mcard="" data-cat="cafes" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/hope-street-cafe.jpg" alt="Volunteers in Hope aprons at Hope Street Café" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Thursdays · 6–8pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Hope Street Café</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">A safe space for those living on the margins of society, with good conversation, hot food and drinks.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- The Ark -->
+      <a href="https://www.facebook.com/TheArkWinchester" target="_blank" rel="noopener noreferrer" data-mcard="" data-cat="families" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/ark.jpg" alt="Young children playing at The Ark" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Mondays · 10–11.30am · MBC · Term time</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">The Ark</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Stay and play for under-5s and their grown-ups — a space to play, sing and connect. Just £1 per family.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Learn more →</span>
+        </div>
+      </a>
+
+      <!-- Hope Youth -->
+      <a href="mailto:youth@hopewinchester.org?subject=Website%20enquiry%20about%20Hope%20Youth" data-mcard="" data-cat="families" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/youth.jpg" alt="Young people playing table football" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Thursdays · 7.15–9pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Hope Youth</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Video games, table tennis, crafts and short talks on life's big questions — for secondary school and college aged young people.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Hope Students -->
+      <a href="https://www.instagram.com/hopewinchesteryoungadults/" target="_blank" rel="noopener noreferrer" data-mcard="" data-cat="families" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/hope-students.jpg" alt="Students laughing together at Hope" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Weekly · MBC &amp; across the city</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Hope Students</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Join students from across the city who are doing life together and make Hope Church your home away from home.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Learn more →</span>
+        </div>
+      </a>
+
+      <!-- Community Groups -->
+      <a href="mailto:communitygroups@hopewinchester.org?subject=Website%20Enquiry%20about%20Community%20Groups" data-mcard="" data-cat="groups" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/lunches-homes.jpg" alt="Friends sharing food in a home" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Various times · Homes around the city</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Community Groups</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">We'd love to help you find community. Our groups are about doing life, growing in faith, praying and building friendships.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Social Groups -->
+      <a href="mailto:communitygroups@hopewinchester.org?subject=Website%20Enquiry%20about%20Social%20Groups" data-mcard="" data-cat="groups" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/social-groups.jpg" alt="Two women gardening together in the sunshine" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Various times · Various locations</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Social Groups</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Communities built around shared interests, from curry nights to muddy walks. Have fun and meet others.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Pick & Mix -->
+      <a href="mailto:office@hopewinchester.org?subject=Website%20enquiry%20about%20Pick%20%26%20Mix" data-mcard="" data-cat="groups" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/pick-mix.jpg" alt="A woman colouring at the Pick and Mix daytime group" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Thursdays · 10.30am–12pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Pick &amp; Mix</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">A daytime group for those who want to connect and have fun. Think quizzes, board games, books and crafts.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Little Bible Study Group -->
+      <a href="mailto:office@hopewinchester.org?subject=Website%20enquiry%20about%20Little%20Bible%20Study%20Group" data-mcard="" data-cat="groups" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/go-deeper.jpg" alt="People studying the Bible together" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Wednesdays · 10.30am–12pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Little Bible Study Group</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">A mixed group of all ages and stages exploring faith together over coffee and cake — everyone's welcome.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Explore! -->
+      <a href="mailto:office@hopewinchester.org?subject=Website%20enquiry%20about%20Explore" data-mcard="" data-cat="faith" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/explore.jpg" alt="A couple smiling over a shared meal at Explore!" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">First Tuesday monthly · 7.30pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Explore!</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Exploring what you believe? Join us for a meal, good conversation and a safe place to ask questions.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Foundations -->
+      <a href="https://hopewinchester.churchsuite.com/events/87juaoo4" target="_blank" rel="noopener noreferrer" data-mcard="" data-cat="faith" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/foundations.jpg" alt="A group discussion with hands raised" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Termly · Various locations</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Foundations</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Considering making Hope Church your home? Come and learn who we are, our values, and what we believe.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Sign up →</span>
+        </div>
+      </a>
+
+      <!-- Freedom in Christ -->
+      <a href="https://hopewinchester.churchsuite.com/events/sossr3ry" target="_blank" rel="noopener noreferrer" data-mcard="" data-cat="faith" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/go-deeper.jpg" alt="A man reading the Bible" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">From September · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Freedom in Christ</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Discipleship that changes us — helping us connect every day with the truth of who God created us to be.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Sign up →</span>
+        </div>
+      </a>
+
+      <!-- Hope Football -->
+      <a href="mailto:tomblee23@gmail.com?subject=Website%20enquiry%20for%20the%20Hope%20Football%20team" data-mcard="" data-cat="sport" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/hope-football.jpg" alt="The Hope Football team together on the pitch" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Wed 8.30–10pm &amp; Sat 10am–12pm · Chandlers Ford</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Hope Football</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Competing in the Solent Churches League, welcoming players from church and beyond. Training Wednesdays, matches Saturdays.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Terrain -->
+      <a href="mailto:steve@stevelee.uk?subject=Hope%20Church%20website%20enquiry%20for%20Terrain" data-mcard="" data-cat="sport" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/terrain.jpg" alt="Two men at a Terrain gathering for men" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">First Saturday monthly · 9am · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Terrain</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">A group of men from all backgrounds who gather to encounter Christ and grow in their discipleship journey.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+      <!-- Speak English with Confidence -->
+      <a href="mailto:julian.shellard@googlemail.com?subject=Website%20enquiry%20for%20the%20English%20Classes" data-mcard="" data-cat="support" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/11;overflow:hidden"><img src="assets/speak-english.jpg" alt="Two people in conversation at English classes" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:26px 26px 28px;display:flex;flex-direction:column;flex:1">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#3F5CAA;margin-bottom:12px">Tuesdays · 10am–12pm · MBC · Term time</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:24px;line-height:1.12;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Speak English with Confidence</h3>
+          <p style="font-size:17px;line-height:1.6;color:#5b5955;margin-bottom:20px">Want to improve your English? Free lessons and conversation (beginner to lower intermediate). Open to all — just turn up.</p>
+          <span style="margin-top:auto;font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAP DEBT CENTRE BANNER ===== -->
+<section data-screen-label="CAP Debt Centre" style="background:#36A877;padding:clamp(56px,7vw,84px) 40px">
+  <div data-reveal="" data-capgrid="" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(32px,5vw,72px);align-items:center">
+    <div>
+      <div style="display:inline-block;background:#fff;border-radius:14px;padding:12px;margin-bottom:24px"><img src="assets/cap-logo-trim.jpg" alt="Christians Against Poverty" style="height:88px;width:auto;display:block;border-radius:4px"></div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(32px,4.4vw,56px);line-height:0.98;letter-spacing:-0.03em;color:#fff;margin-bottom:22px">Struggling with debt? You're not alone.</h2>
+      <p style="font-size:20px;line-height:1.7;color:rgba(255,255,255,0.9);max-width:620px;margin-bottom:20px">In partnership with Christians Against Poverty, we offer free, friendly and completely confidential debt help — with a real person walking alongside you on the journey to becoming debt-free. No judgement, no cost, just support. By appointment at the Middle Brook Centre.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <a href="https://capuk.org/get-help" target="_blank" rel="noopener noreferrer" style="background:#fff;color:#1c7a52;padding:16px 34px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600;display:inline-flex;align-items:center;gap:8px" style-hover="background:#F4EBE1">Get help today <span>→</span></a>
+        <a href="mailto:office@hopewinchester.org?subject=CAP%20Debt%20Centre%20enquiry" style="background:transparent;color:#fff;padding:15px 32px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600;border:1.5px solid rgba(255,255,255,0.5)" style-hover="background:rgba(255,255,255,0.12)">Ask us a question</a>
+      </div>
+    </div>
+    <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/11;box-shadow:0 18px 44px -20px rgba(0,0,0,0.45)">
+      <img src="assets/cap-poverty.jpg" alt="Together, we can end poverty" style="width:100%;height:100%;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3 · EVENTS + CALENDAR ===== -->
+<section id="events" data-screen-label="Events" style="background:#0D1B3E;padding:clamp(72px,10vw,116px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="max-width:720px;margin-bottom:44px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:20px">Events</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(34px,4.6vw,60px);line-height:0.98;letter-spacing:-0.03em;color:#fff;margin-bottom:22px">What's coming up</h2>
+      <p style="font-size:20px;line-height:1.7;color:rgba(255,255,255,0.78)">Alongside our weekly rhythm, we gather for one-off events throughout the year. Here's what's next — and the full church calendar.</p>
+    </div>
+
+    <!-- Featured event -->
+    <div data-reveal="" style="display:grid;grid-template-columns:0.8fr 1fr;gap:0;background:#162040;border-radius:20px;overflow:hidden;margin-bottom:56px" data-grid2="">
+      <div style="overflow:hidden"><img src="assets/picnic-park.jpg" alt="Church members enjoying a picnic together in the park" style="width:100%;height:100%;object-fit:cover;object-position:center 55%"></div>
+      <div style="padding:40px 44px;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#F0A98C;margin-bottom:16px">Featured event · Sunday 16 August</div>
+        <h3 style="font-family:Inter;font-weight:300;font-size:32px;line-height:1.08;letter-spacing:-0.02em;color:#fff;margin-bottom:18px">Picnic in the Park</h3>
+        <p style="font-size:18px;line-height:1.65;color:rgba(255,255,255,0.82);margin-bottom:26px">After our Sunday morning service on 16 August, we'll be walking over to the recreation ground in Winchester to enjoy lunch together in the sun. Pack a picnic and a blanket!</p>
+        <span style="font-family:Inter;font-size:17px;font-weight:600;color:#F0A98C;display:inline-flex;gap:8px;align-items:center">Just turn up</span>
+      </div>
+    </div>
+
+    <!-- Calendar -->
+    <div data-reveal="">
+      <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#A3C0E8;margin-bottom:18px">The full picture</div>
+      <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px -24px rgba(0,0,0,0.5)">
+        <iframe src="https://hopewinchester.churchsuite.com/embed/calendar?preview=true" title="Hope Church Winchester calendar" loading="lazy" style="width:100%;height:660px;border:0;display:block"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section data-screen-label="From the Blog" style="background:#F4EBE1;padding:clamp(72px,10vw,120px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="max-width:720px;margin-bottom:48px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#3F5CAA;margin-bottom:20px">Hope in Action</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(34px,4.6vw,60px);line-height:0.98;letter-spacing:-0.03em;color:#0D1B3E;margin-bottom:22px">Stories from our blog</h2>
+      <p style="font-size:20px;line-height:1.7;color:rgba(35,34,32,0.7)">Reflections, testimonies and news from life across our church and our city — written by our community and refreshed through the year.</p>
+    </div>
+    <a href="https://hopeinactionwinchester.squarespace.com/blog" target="_blank" rel="noopener noreferrer" data-reveal="" class="lift" style="display:grid;grid-template-columns:1fr 0.9fr;gap:0;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(13,27,62,0.45)" data-grid2="">
+      <div style="overflow:hidden;min-height:280px"><img src="assets/blog-miracle-street.jpg" alt="Open-air preaching from the Miracle Street bus in Winchester" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="padding:clamp(36px,4vw,52px);display:flex;flex-direction:column;justify-content:center">
+        <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#3F5CAA;margin-bottom:16px">The Hope in Action blog</div>
+        <h3 style="font-family:Inter;font-weight:300;font-size:32px;line-height:1.08;letter-spacing:-0.02em;color:#0D1B3E;margin-bottom:18px">Read the latest</h3>
+        <p style="font-size:18px;line-height:1.65;color:rgba(35,34,32,0.68);margin-bottom:26px">Read real stories of God's mission at work in our community and across the world.</p>
+        <span style="font-family:Inter;font-size:17px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:8px;align-items:center">Visit the blog<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== 4 · HOPE WEEKLY ===== -->
+<section data-screen-label="Hope Weekly" style="background:#0D1B3E;padding:clamp(72px,10vw,120px) 40px">
+  <div data-reveal="" style="max-width:900px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;background:linear-gradient(135deg,rgba(163,192,232,0.12),rgba(255,255,255,0.04));border:1px solid rgba(163,192,232,0.28);border-radius:24px;padding:clamp(32px,4vw,52px)" data-newsgrid="">
+      <div style="position:relative;width:112px;height:112px;flex-shrink:0" data-newsicon="">
+        <div style="width:112px;height:112px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px -18px rgba(0,0,0,0.5)">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#0D1B3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+        </div>
+        <div style="position:absolute;top:-12px;right:-12px;background:#3F5CAA;color:#fff;font-family:Inter;font-size:12px;font-weight:700;letter-spacing:0.04em;padding:7px 12px;border-radius:999px;box-shadow:0 6px 16px -4px rgba(0,0,0,0.4);white-space:nowrap">Every Saturday</div>
+      </div>
+      <div>
+        <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:12px">The weekly newsletter</div>
+        <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,50px);line-height:1.0;letter-spacing:-0.03em;color:#fff;margin-bottom:16px">The Hope Weekly</h2>
+        <p style="font-size:19px;line-height:1.65;color:rgba(255,255,255,0.78);max-width:52ch;margin-bottom:22px">Emailed every Saturday — the best way to stay in the know with everything happening across Hope Church.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px">
+          <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:8px 15px;font-family:Inter;font-size:15px;color:rgba(255,255,255,0.85)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="1.9"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Upcoming events</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:8px 15px;font-family:Inter;font-size:15px;color:rgba(255,255,255,0.85)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="1.9"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Community stories</span>
+          <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:8px 15px;font-family:Inter;font-size:15px;color:rgba(255,255,255,0.85)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="1.9"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Ways to get involved</span>
+        </div>
+        <a href="https://hopewinchester.churchsuite.co.uk/embed/addressbook/form" target="_blank" rel="noopener noreferrer" class="lift" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0D1B3E;padding:16px 36px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600">Subscribe now<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1B3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer data-foot="" style="background:#060D1E;border-top:1px solid rgba(255,255,255,0.06);padding:64px 40px 30px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px" data-footgrid="">
+      <div data-footaddr="">
+        <img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto;margin-bottom:20px">
+        <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:16px">Middle Brook Centre<br>Middle Brook Street<br>Winchester, SO23 8DQ</div>
+        <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9">office@hopewinchester.org<br>01962 840800<br>Mon–Fri 9am–5pm</div>
+      </div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Visit</div><a href="Sunday.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Sunday</a><a href="New Here.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">New Here</a><a href="Families.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Families</a><a href="#top" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">What's On</a></div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Learn</div><a href="About.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">About Us</a><a href="Teaching.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Teaching</a><a href="https://hopeinactionwinchester.squarespace.com/blog" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Blog</a></div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Connect</div><a href="Contact.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Contact</a><a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Give</a><a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">ChurchSuite</a><a href="https://www.middlebrookcentre.org" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Room Hire</a></div>
+    </div>
+    <div data-footpartners="" style="display:flex;justify-content:flex-end;align-items:center;gap:24px;margin-bottom:32px"><img src="assets/partners/commission-white.png" alt="Commission" style="height:42px;width:auto;opacity:0.85"><img src="assets/partners/ea-white.png" alt="Evangelical Alliance" style="height:18px;width:auto;opacity:0.85"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)">
+      <div style="font-family:Inter;font-size:15px;color:rgba(255,255,255,0.4);display:flex;gap:16px;flex-wrap:wrap;align-items:center">© Hope Church Winchester · Charity 1128609 · Company 6804892<a href="https://hopewinchester.sharepoint.com/:b:/s/HCWPolicies/IQAGnuNtyeoyQZRm6KLZ4g7nAdqSUT8G8u1n-_71NCfshbo?e=oFwDAn" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.55);font-size:15px">Safeguarding Policy</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:18px"><div style="display:flex;gap:16px">
+        <a href="https://www.facebook.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.75-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"></path></svg></a>
+        <a href="https://www.instagram.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.5)" stroke="none"></circle></svg></a>
+        <a href="https://www.youtube.com/@HopeChurchWinchester" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19 5 12 5 12 5s-7 0-8.8.2c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8C5 19 12 19 12 19s7 0 8.8-.2c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM10 15V9l5 3z"></path></svg></a><a href="https://open.spotify.com/show/6AJZWz4CNeD6rNZYUuAtZG" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14 4.38-1.32 9.78-.66 13.5 1.62.36.18.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.1 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.32-1.32 11.34-1.02 15.72 1.56.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.5.36z"></path></svg></a>
+        <a href="https://soundcloud.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Soundcloud"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6" stroke-linecap="round"><path d="M4 14v3M7 11v6M10 9v8M13 8v9"></path><path d="M16 10a4 4 0 0 1 4 4v0a3 3 0 0 1-3 3h-1V10z"></path></svg></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { navSolid: false, menuOpen: false, activeCat: 'all' };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const solid = window.scrollY > 40;
+      if (solid !== this.state.navSolid) this.setState({ navSolid: solid });
+      const bg = document.querySelector('[data-hero-bg]');
+      if (bg) bg.style.transform = 'translateY(' + (window.scrollY * 0.18) + 'px)';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => this.applyResponsive();
+    window.addEventListener('resize', this._onResize);
+    this.initReveals();
+    this.applyResponsive();
+    this.initFilter();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._revealFallback);
+  }
+  initFilter() {
+    const pills = Array.from(document.querySelectorAll('[data-filter]'));
+    pills.forEach(p => {
+      p.addEventListener('click', () => this.applyFilter(p.dataset.filter));
+    });
+  }
+  applyFilter(cat) {
+    this._activeCat = cat;
+    document.querySelectorAll('[data-filter]').forEach(p => {
+      const active = p.dataset.filter === cat;
+      p.style.background = active ? '#0D1B3E' : 'transparent';
+      p.style.color = active ? '#fff' : '#232220';
+      p.style.borderColor = active ? '#0D1B3E' : 'rgba(35,34,32,0.2)';
+    });
+    document.querySelectorAll('[data-mcard]').forEach(c => {
+      const show = cat === 'all' || c.dataset.cat === cat;
+      c.style.display = show ? 'flex' : 'none';
+    });
+  }
+  applyResponsive() {
+    const w = window.innerWidth;
+    const mobile = w < 1080;
+    document.querySelectorAll('[data-newsgrid]').forEach(el => { el.style.gridTemplateColumns = mobile ? '1fr' : 'auto 1fr'; el.style.textAlign = mobile ? 'center' : 'left'; el.style.justifyItems = mobile ? 'center' : 'stretch'; });
+    const narrow = w < 560;
+    const set = (sel, cols) => document.querySelectorAll(sel).forEach(el => { el.style.gridTemplateColumns = cols; });
+    document.querySelectorAll('[data-grid2]').forEach(el => {
+      if (el.dataset.deskCols === undefined) el.dataset.deskCols = el.style.gridTemplateColumns || '1fr 1fr';
+      el.style.gridTemplateColumns = mobile ? '1fr' : el.dataset.deskCols;
+    });
+    document.querySelectorAll('[data-capgrid]').forEach(el => { el.style.gridTemplateColumns = mobile ? '1fr' : '1.5fr 1fr'; });
+    document.querySelectorAll('[data-mgrid]').forEach(el => {
+      el.style.gridTemplateColumns = narrow ? '1fr' : (mobile ? 'repeat(2,1fr)' : 'repeat(3,1fr)');
+    });
+    document.querySelectorAll('[data-footgrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? 'repeat(2,1fr)' : (mobile ? '1fr 1fr' : '2fr 1fr 1fr 1fr'); el.style.gap = narrow ? '30px 22px' : '48px'; el.style.marginBottom = narrow ? '34px' : '44px'; });
+    document.querySelectorAll('[data-footaddr]').forEach(el => { el.style.gridColumn = narrow ? '1 / -1' : 'auto'; });
+    document.querySelectorAll('[data-foot]').forEach(el => { el.style.padding = narrow ? '46px 24px 28px' : '64px 40px 30px'; });
+    document.querySelectorAll('[data-footpartners]').forEach(el => { el.style.justifyContent = narrow ? 'flex-start' : 'flex-end'; });
+    document.querySelectorAll('[data-navlinks]').forEach(el => { el.style.display = mobile ? 'none' : 'flex'; });
+    document.querySelectorAll('[data-navctas]').forEach(el => { el.style.display = mobile ? 'none' : 'flex'; });
+    document.querySelectorAll('[data-hamburger]').forEach(el => { el.style.display = mobile ? 'inline-flex' : 'none'; });
+  }
+  initReveals() {
+    if (this._io) this._io.disconnect();
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity 0.7s cubic-bezier(0.2,0,0,1), transform 0.7s cubic-bezier(0.2,0,0,1)';
+    });
+    if (!('IntersectionObserver' in window)) { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); return; }
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; this._io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => this._io.observe(el));
+    clearTimeout(this._revealFallback);
+    this._revealFallback = setTimeout(() => { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); }, 1400);
+  }
+  renderVals() {
+    const navSolid = this.state.navSolid;
+    return {
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navStyle: 'position:fixed;top:0;left:0;right:0;z-index:300;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;transition:background .3s, backdrop-filter .3s;' +
+        (navSolid ? 'background:rgba(8,15,30,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)' : 'background:linear-gradient(to bottom,rgba(8,15,30,0.8),rgba(8,15,30,0.35) 60%,transparent)'),
+      menuStyle: 'position:fixed;top:74px;left:0;right:0;z-index:290;background:rgba(8,15,30,0.98);backdrop-filter:blur(16px);padding:24px 40px 32px;flex-direction:column;border-bottom:1px solid rgba(255,255,255,0.08);' + (this.state.menuOpen ? 'display:flex' : 'display:none'),
+    };
+  }
+}
+</script>
+</body>
+</html>

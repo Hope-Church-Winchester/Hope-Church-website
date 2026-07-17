@@ -1,0 +1,199 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "slides/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Neue Montreal|Big Shoulders Display|Sora))/i]",
+        "message": "Font not provided by the design system. Available: Neue Montreal, Big Shoulders Display, Sora."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--accent-2",
+      "--accent-support",
+      "--bg",
+      "--bg-alt",
+      "--bg-brand",
+      "--bg-dark",
+      "--border",
+      "--border-strong",
+      "--fg",
+      "--fg-muted",
+      "--fg-on-brand",
+      "--fg-on-dark",
+      "--fg-subtle",
+      "--focus-ring",
+      "--font-body",
+      "--font-display",
+      "--font-heading",
+      "--fs-2xl",
+      "--fs-3xl",
+      "--fs-4xl",
+      "--fs-5xl",
+      "--fs-6xl",
+      "--fs-base",
+      "--fs-lg",
+      "--fs-md",
+      "--fs-sm",
+      "--fs-xl",
+      "--fs-xs",
+      "--hope-blue",
+      "--hope-charcoal",
+      "--hope-cream",
+      "--hope-green",
+      "--hope-lavender",
+      "--hope-orange",
+      "--hope-purple",
+      "--hope-slate-blue",
+      "--hope-white",
+      "--lh-loose",
+      "--lh-normal",
+      "--lh-snug",
+      "--lh-tight",
+      "--link",
+      "--link-hover",
+      "--ls-body",
+      "--ls-display",
+      "--ls-eyebrow",
+      "--ls-heading",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xl",
+      "--s-0",
+      "--s-1",
+      "--s-10",
+      "--s-2",
+      "--s-3",
+      "--s-4",
+      "--s-5",
+      "--s-6",
+      "--s-7",
+      "--s-8",
+      "--s-9",
+      "--shadow-lg",
+      "--shadow-md",
+      "--shadow-sm"
+    ],
+    "tokenKinds": {
+      "--hope-purple": "color",
+      "--hope-blue": "color",
+      "--hope-cream": "color",
+      "--hope-slate-blue": "color",
+      "--hope-white": "color",
+      "--hope-charcoal": "color",
+      "--hope-lavender": "color",
+      "--hope-orange": "color",
+      "--hope-green": "color",
+      "--bg": "color",
+      "--bg-alt": "color",
+      "--bg-dark": "color",
+      "--bg-brand": "color",
+      "--fg": "color",
+      "--fg-muted": "color",
+      "--fg-subtle": "color",
+      "--fg-on-dark": "color",
+      "--fg-on-brand": "color",
+      "--accent": "color",
+      "--accent-2": "color",
+      "--accent-support": "color",
+      "--link": "color",
+      "--link-hover": "color",
+      "--border": "color",
+      "--border-strong": "color",
+      "--focus-ring": "color",
+      "--font-display": "font",
+      "--font-heading": "font",
+      "--font-body": "font",
+      "--fs-xs": "spacing",
+      "--fs-sm": "spacing",
+      "--fs-base": "spacing",
+      "--fs-md": "spacing",
+      "--fs-lg": "spacing",
+      "--fs-xl": "spacing",
+      "--fs-2xl": "spacing",
+      "--fs-3xl": "spacing",
+      "--fs-4xl": "spacing",
+      "--fs-5xl": "spacing",
+      "--fs-6xl": "spacing",
+      "--lh-tight": "other",
+      "--lh-snug": "other",
+      "--lh-normal": "other",
+      "--lh-loose": "other",
+      "--ls-display": "spacing",
+      "--ls-heading": "spacing",
+      "--ls-body": "spacing",
+      "--ls-eyebrow": "spacing",
+      "--s-0": "other",
+      "--s-1": "spacing",
+      "--s-2": "spacing",
+      "--s-3": "spacing",
+      "--s-4": "spacing",
+      "--s-5": "spacing",
+      "--s-6": "spacing",
+      "--s-7": "spacing",
+      "--s-8": "spacing",
+      "--s-9": "spacing",
+      "--s-10": "spacing",
+      "--r-sm": "spacing",
+      "--r-md": "spacing",
+      "--r-lg": "spacing",
+      "--r-xl": "spacing",
+      "--r-pill": "spacing",
+      "--shadow-sm": "shadow",
+      "--shadow-md": "shadow",
+      "--shadow-lg": "shadow"
+    },
+    "fontFamilies": [
+      "Big Shoulders Display",
+      "Neue Montreal",
+      "Sora"
+    ]
+  }
+}

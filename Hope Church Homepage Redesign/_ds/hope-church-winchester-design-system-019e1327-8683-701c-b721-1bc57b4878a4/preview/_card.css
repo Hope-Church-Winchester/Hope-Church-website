@@ -1,0 +1,33 @@
+/* Shared preview-card base — kept tiny on purpose. */
+@import url("../colors_and_type.css");
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--fg);
+}
+.card {
+  box-sizing: border-box;
+  width: 700px;
+  padding: 24px;
+  background: var(--bg);
+}
+.card.dark   { background: var(--hope-charcoal); color: var(--hope-cream); }
+.card.cream  { background: var(--hope-cream); }
+.card.white  { background: var(--hope-white); }
+.row { display: flex; gap: 12px; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 12px; }
+.label-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+}
+.mono {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+}

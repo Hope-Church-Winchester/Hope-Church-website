@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Light.ttf") format("truetype");font-weight:300;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Neue Montreal","Inter",system-ui,sans-serif;background:#0D1B3E;color:#232220;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:#3F5CAA;text-decoration:none}
+a:hover{color:#0D1B3E}
+::selection{background:#3F5CAA;color:#fff}
+.lift{transition:transform .35s cubic-bezier(0.2,0,0,1),box-shadow .35s cubic-bezier(0.2,0,0,1)}
+.lift:hover{transform:translateY(-6px)!important;box-shadow:0 18px 40px -18px rgba(13,27,62,0.45)}
+</style>
+</helmet>
+<div style="position:relative;background:#F4EBE1">
+
+<nav style="{{ navStyle }}">
+  <a href="Hope Homepage.dc.html" style="display:flex;align-items:center" aria-label="Hope Church Winchester — home"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto"></a>
+  <div style="display:none;gap:30px" data-navlinks="">
+    <a href="New Here.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">New Here</a>
+    <a href="Sunday.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Sunday</a>
+    <a href="What's On.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">What's On</a>
+    <a href="#top" style="color:#fff;font-family:Inter;font-size:16px;padding-bottom:3px;border-bottom:2px solid #3F5CAA">Families</a>
+    <a href="About.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">About</a>
+    <a href="Teaching.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Teaching</a>
+    <a href="Contact.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Contact</a>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center" data-navctas="">
+    <a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="background:#fff;color:#0D1B3E;padding:10px 22px;border-radius:999px;font-family:Inter;font-size:15px;font-weight:600">Give</a>
+    <a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="background:transparent;color:#fff;padding:9px 20px;border-radius:999px;font-family:Inter;font-size:15px;font-weight:600;border:1.5px solid rgba(255,255,255,0.45)">ChurchSuite</a>
+  </div>
+  <button onClick="{{ toggleMenu }}" aria-label="Menu" data-hamburger="" style="display:none;background:transparent;border:none;cursor:pointer;padding:8px">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+  </button>
+</nav>
+
+<div style="{{ menuStyle }}">
+  <a href="New Here.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">New Here</a>
+  <a href="Sunday.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Sunday</a>
+  <a href="What's On.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">What's On</a>
+  <a href="#top" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:#fff;padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Families</a>
+  <a href="About.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">About</a>
+  <a href="Teaching.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Teaching</a>
+  <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Contact</a>
+</div>
+
+<div id="top"></div>
+
+<!-- ===== 1 · HERO ===== -->
+<section data-screen-label="Families Hero" style="position:relative;min-height:82vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#0D1B3E">
+  <div data-hero-bg="" style="position:absolute;left:0;right:0;top:-8%;bottom:-8%;background-image:url('assets/families-hero.jpg');background-size:cover;background-position:center 35%;will-change:transform"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,15,30,0.94) 0%,rgba(8,15,30,0.5) 46%,rgba(8,15,30,0.18) 100%)"></div>
+  <div style="position:relative;max-width:1280px;width:100%;margin:0 auto;padding:0 40px 72px">
+    <h1 style="font-family:Inter;font-weight:200;font-size:clamp(52px,8.4vw,116px);line-height:0.92;letter-spacing:-0.035em;color:#fff;margin:0">Something for<br><span style="color:#A3C0E8">every stage.</span></h1>
+    <p style="max-width:660px;margin:30px 0 34px;font-size:22px;line-height:1.65;color:rgba(255,255,255,0.88)">We value people of every age, just as God does — from tots to teenagers. Whatever stage your family is at, there's a warm welcome and a place to belong here at Hope.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#sundays" style="background:#fff;color:#0D1B3E;padding:16px 32px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600;display:inline-flex;align-items:center;gap:8px" style-hover="background:#A3C0E8">Kids on a Sunday <span>→</span></a>
+      <a href="#help" style="background:transparent;color:#fff;padding:15px 32px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600;border:1.5px solid rgba(255,255,255,0.45)" style-hover="background:rgba(255,255,255,0.1)">Meet the team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 · VISION ===== -->
+<section data-screen-label="Vision" style="background:#F4EBE1;padding:clamp(72px,10vw,120px) 40px">
+  <div data-reveal="" style="max-width:900px;margin:0 auto;text-align:center">
+    <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#52A891;margin-bottom:22px">Who we are</div>
+    <h2 style="font-family:Inter;font-weight:200;font-size:clamp(32px,4.4vw,56px);line-height:1.0;letter-spacing:-0.03em;color:#0D1B3E;margin-bottom:26px">Helping families flourish</h2>
+    <p style="font-size:21px;line-height:1.7;color:#5b5955;margin-bottom:20px">Hope Families is our ministry for all things families and kids. We're passionate about helping families flourish and building community across the church — from the youngest to the oldest.</p>
+    <p style="font-size:21px;line-height:1.7;color:#5b5955">We long for every child and their family to experience and know God, and to feel equipped to do everyday life with Him as their partner. We want every child to know they are accepted, valued, and part of a safe community.</p>
+  </div>
+</section>
+
+<!-- ===== 3 · MEET THE TEAM / HELP ===== -->
+<section id="help" data-screen-label="Meet the team" style="background:#C76C81;padding:clamp(72px,10vw,120px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" data-grid2="" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;margin-bottom:64px">
+      <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/3"><img src="assets/families-help.jpg" alt="A Hope leader chatting warmly with children" style="width:100%;height:100%;object-fit:cover"></div>
+      <div>
+        <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:20px">We're here to help</div>
+        <h2 style="font-family:Inter;font-weight:200;font-size:clamp(30px,4vw,52px);line-height:1.0;letter-spacing:-0.03em;color:#fff;margin-bottom:22px">Walking alongside you</h2>
+        <p style="font-size:20px;line-height:1.7;color:rgba(255,255,255,0.82);margin-bottom:30px">We love to welcome and support families here at Hope. We'd count it a joy to partner with you as you bring up your children day to day — so please do get in touch, to learn about all the different opportunities that you can get involved in throughout the week.</p>
+        <a href="mailto:kirsty.read@hopewinchester.org?subject=Hope%20Families%20enquiry" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0D1B3E;padding:16px 34px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600" style-hover="background:#A3C0E8">Get in touch <span>→</span></a>
+      </div>
+    </div>
+
+    <!-- Leaders -->
+    <div data-reveal="" data-leadgrid="" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="background:rgba(0,0,0,0.16);border-radius:18px;padding:32px;display:flex;gap:26px;align-items:center">
+        <img src="assets/kirsty.png" alt="Kirsty Read" style="width:120px;height:120px;border-radius:999px;object-fit:cover;flex-shrink:0;background:#fff">
+        <div>
+          <h3 style="font-family:Inter;font-weight:500;font-size:24px;color:#fff;margin-bottom:6px">Kirsty Read</h3>
+          <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#A3C0E8;margin-bottom:14px">Children &amp; Families Lead</div>
+          <a href="mailto:kirsty.read@hopewinchester.org?subject=Hope%20Families%20enquiry" style="font-family:Inter;font-size:16px;font-weight:600;color:#fff;display:inline-flex;gap:6px" style-hover="color:#A3C0E8">Message Kirsty →</a>
+        </div>
+      </div>
+      <div style="background:rgba(0,0,0,0.16);border-radius:18px;padding:32px;display:flex;gap:26px;align-items:center">
+        <img src="assets/kate.jpg" alt="Kate, Lead Youth Worker" style="width:120px;height:120px;border-radius:999px;object-fit:cover;flex-shrink:0">
+        <div>
+          <h3 style="font-family:Inter;font-weight:500;font-size:24px;color:#fff;margin-bottom:6px">Kate</h3>
+          <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#A3C0E8;margin-bottom:14px">Lead Youth Worker</div>
+          <a href="mailto:youth@hopewinchester.org?subject=Hope%20Youth%20enquiry" style="font-family:Inter;font-size:16px;font-weight:600;color:#fff;display:inline-flex;gap:6px" style-hover="color:#A3C0E8">Message the youth team →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 · HOPE KIDS ON SUNDAY ===== -->
+<section id="sundays" data-screen-label="Hope Kids Sunday" style="background:#F4EBE1;padding:clamp(72px,10vw,120px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="max-width:720px;margin-bottom:52px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C76C81;margin-bottom:20px">On a Sunday</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(34px,4.6vw,60px);line-height:0.98;letter-spacing:-0.03em;color:#0D1B3E;margin-bottom:22px">Hope Kids and Young People</h2>
+      <p style="font-size:20px;line-height:1.7;color:#5b5955">Each Sunday our children gather in age groups to build community and grow their relationship with God. We explore the same Bible story across every group, so conversations can carry on at home through the week.</p>
+      <a href="Sunday.dc.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;background:#0D1B3E;color:#fff;padding:15px 32px;border-radius:999px;font-family:Inter;font-size:17px;font-weight:600" style-hover="background:#3F5CAA">Learn all about Sundays <span>→</span></a>
+    </div>
+
+    <div data-reveal="" data-agegrid="" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+      <div style="background:#EABB4F;border-radius:16px;padding:32px">
+        <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(35,34,32,0.7);margin-bottom:14px">Age 0–4 · with a grown-up</div>
+        <h3 style="font-family:Inter;font-weight:500;font-size:26px;letter-spacing:-0.01em;color:#232220;margin-bottom:14px">Under 5s Stay &amp; Play</h3>
+        <p style="font-size:18px;line-height:1.65;color:#3a3833">A community space for under-5s and their adults to be together and receive from God. Toys, snacks, tea &amp; coffee, space to chat, and a live stream of the preach — you'll leave ready for the week ahead. Private breastfeeding space available.</p>
+      </div>
+      <div style="background:#C76C81;border-radius:16px;padding:32px">
+        <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:14px">Age 2–4</div>
+        <h3 style="font-family:Inter;font-weight:500;font-size:26px;letter-spacing:-0.01em;color:#fff;margin-bottom:14px">Under 5s Kids</h3>
+        <p style="font-size:18px;line-height:1.65;color:rgba(255,255,255,0.92)">Our 2–4 year-olds meet each week for fun, craft, singing and snack time, looking at a simple version of the stories being studied in the primary groups.</p>
+      </div>
+      <div style="background:#52A891;border-radius:16px;padding:32px">
+        <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:14px">Year R–3</div>
+        <h3 style="font-family:Inter;font-weight:500;font-size:26px;letter-spacing:-0.01em;color:#fff;margin-bottom:14px">Lower Primary Kids</h3>
+        <p style="font-size:18px;line-height:1.65;color:rgba(255,255,255,0.92)">Kids in Years R–3 meet to build community and grow their relationship with God through games, stories, prayer, worship and group activities.</p>
+      </div>
+      <div style="background:#4E82AB;border-radius:16px;padding:32px">
+        <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:14px">Year 4–6</div>
+        <h3 style="font-family:Inter;font-weight:500;font-size:26px;letter-spacing:-0.01em;color:#fff;margin-bottom:14px">Upper Kids</h3>
+        <p style="font-size:18px;line-height:1.65;color:rgba(255,255,255,0.92)">For kids in Years 4–6 — everything Lower Primary enjoy, in a more grown-up way, exploring the same Bible story each week.</p>
+      </div>
+    </div>
+
+    <div data-reveal="" style="margin-top:44px">
+      <div style="max-width:720px;margin-bottom:24px">
+        <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8C5B8E;margin-bottom:16px">Young people</div>
+        <p style="font-size:20px;line-height:1.7;color:#5b5955">Spaces on Sunday for young people to explore faith and friendships.</p>
+      </div>
+      <div data-youthgrid="" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+        <div style="background:#232220;border-radius:16px;padding:32px">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:14px">Year 7–9</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:26px;letter-spacing:-0.01em;color:#fff">Younger Youth</h3>
+        </div>
+        <div style="background:#232220;border-radius:16px;padding:32px">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:14px">Year 10–11</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:26px;letter-spacing:-0.01em;color:#fff">Older Youth</h3>
+        </div>
+        <div style="background:#232220;border-radius:16px;padding:32px">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:14px">Year 12–13</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:26px;letter-spacing:-0.01em;color:#fff">College Youth</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 · MUSIC ===== -->
+<section data-screen-label="Music" style="background:#4E82AB;padding:clamp(72px,10vw,116px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="max-width:720px;margin-bottom:48px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:20px">Sing along at home</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(34px,4.6vw,60px);line-height:0.98;letter-spacing:-0.03em;color:#fff;margin-bottom:22px">Our playlists</h2>
+      <p style="font-size:20px;line-height:1.7;color:rgba(255,255,255,0.78)">Keep the songs going through the week. Pop these on in the car or at home — the same worship your kids and young people are singing on a Sunday.</p>
+    </div>
+    <div data-reveal="" data-grid2="" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <a href="https://open.spotify.com/playlist/77rZSJ7cbrfsqo5Ntn9Erv" target="_blank" rel="noopener noreferrer" class="lift" style="display:flex;align-items:center;gap:24px;background:rgba(0,0,0,0.16);border-radius:18px;padding:32px;text-decoration:none">
+        <div style="width:76px;height:76px;border-radius:12px;overflow:hidden;flex-shrink:0"><img src="assets/playlist-kids.jpg" alt="Hope Kids Worship playlist artwork" style="width:100%;height:100%;object-fit:cover"></div>
+        <div>
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:8px">On Spotify</div>
+          <h3 style="font-family:Inter;font-weight:500;font-size:24px;color:#fff;margin-bottom:4px">Hope Kids playlist</h3>
+          <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Songs for our younger ones</div>
+        </div>
+      </a>
+      <a href="https://open.spotify.com/playlist/55AMrAgaBywUgv3jVYEnNE" target="_blank" rel="noopener noreferrer" class="lift" style="display:flex;align-items:center;gap:24px;background:rgba(0,0,0,0.16);border-radius:18px;padding:32px;text-decoration:none">
+        <div style="width:76px;height:76px;border-radius:12px;overflow:hidden;flex-shrink:0"><img src="assets/playlist-youth.jpg" alt="Hope Youth playlist artwork" style="width:100%;height:100%;object-fit:cover"></div>
+        <div>
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:8px">On Spotify</div>
+          <h3 style="font-family:Inter;font-weight:500;font-size:24px;color:#fff;margin-bottom:4px">Hope Youth playlist</h3>
+          <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Worship for our young people</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 · WE NEED YOUR HELP ===== -->
+<section data-screen-label="Volunteer" style="background:#45997F;padding:clamp(64px,8vw,100px) 40px">
+  <div data-reveal="" data-grid2="" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center">
+    <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/3"><img src="assets/ark-2.jpg" alt="Volunteers helping at a Hope Families group" style="width:100%;height:100%;object-fit:cover"></div>
+    <div>
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:20px">We need your help!</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(32px,4.4vw,54px);line-height:1.02;letter-spacing:-0.03em;color:#fff;margin-bottom:24px">Could you join our families Sunday serving team?</h2>
+      <p style="font-size:21px;line-height:1.7;color:#fff;max-width:560px;margin:0 0 34px">We always need more volunteers to help support our Sunday kids and youth work. If you'd love to be part of it, please send Kirsty a message — we'd be delighted to hear from you.</p>
+      <a href="mailto:kirsty.read@hopewinchester.org?subject=Joining%20the%20families%20Sunday%20serving%20team" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#2f6f5c;padding:17px 38px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600" style-hover="background:#F4EBE1">Message Kirsty <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7 · ARK & AFTER SCHOOL ===== -->
+<section data-screen-label="Midweek" style="background:#F4EBE1;padding:clamp(72px,10vw,116px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="max-width:720px;margin-bottom:44px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#52A891;margin-bottom:20px">In the week</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(30px,4vw,52px);line-height:0.98;letter-spacing:-0.03em;color:#0D1B3E;margin-bottom:22px">Midweek at Hope</h2>
+      <p style="font-size:20px;line-height:1.7;color:#5b5955">Some of our best-loved groups for children, young people and families through the week — come and join us.</p>
+      <a href="What's On.dc.html" style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;background:#0D1B3E;color:#fff;padding:15px 32px;border-radius:999px;font-family:Inter;font-size:17px;font-weight:600" style-hover="background:#3F5CAA">See what else happens midweek <span>→</span></a>
+    </div>
+    <div data-reveal="" data-midgrid="" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <a href="mailto:helen@hopewinchester.org?subject=Website%20Enquiry" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/10;overflow:hidden"><img src="assets/ark-1.jpg" alt="Toddlers playing at The Ark" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:28px 30px 30px">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#C76C81;margin-bottom:12px">Babies &amp; toddlers · Mondays 10–11.30am · £1 per family</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:26px;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">The Ark</h3>
+          <p style="font-size:18px;line-height:1.65;color:#5b5955;margin-bottom:18px">A baby and toddler group at the Middle Brook Centre in term time (excluding bank holidays). Free play, craft and singing, with hot drinks for the grown-ups. Admission closes 10.30am.</p>
+          <span style="font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+      <a href="mailto:kirsty@hopewinchester.org?subject=Website%20Enquiry" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/10;overflow:hidden"><img src="assets/ark-3.jpg" alt="Children enjoying activities together" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:28px 30px 30px">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#8C5B8E;margin-bottom:12px">School-age kids · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:26px;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">After School Club</h3>
+          <p style="font-size:18px;line-height:1.65;color:#5b5955;margin-bottom:18px">A relaxed, fun-filled space for school-age children after the school day — games, activities, snacks and friendship. Get in touch with Kirsty for the latest days and times.</p>
+          <span style="font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+      <a href="mailto:youth@hopewinchester.org?subject=Website%20Enquiry" class="lift" style="background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none">
+        <div style="aspect-ratio:16/10;overflow:hidden"><img src="assets/youth.jpg" alt="Young people playing table football" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="padding:28px 30px 30px">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#4E82AB;margin-bottom:12px">Year 7–13 · Thursdays 7.15–9pm · MBC</div>
+          <h3 style="font-family:Inter;font-weight:400;font-size:26px;letter-spacing:-0.01em;color:#0D1B3E;margin-bottom:12px">Hope Youth</h3>
+          <p style="font-size:18px;line-height:1.65;color:#5b5955;margin-bottom:18px">Grow faith and friendships through a relaxed evening in a café time which will include video games, table tennis, crafts and short talks on life's big questions. For secondary school and college aged young people.</p>
+          <span style="font-family:Inter;font-size:16px;font-weight:600;color:#3F5CAA;display:inline-flex;gap:6px">Enquire →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8 · NEWDAY ===== -->
+<section data-screen-label="NewDay" style="position:relative;min-height:44vh;display:flex;align-items:flex-end;overflow:hidden;background:#060D1E">
+  <div data-hero-bg="" style="position:absolute;inset:0;background-image:url('assets/newday.jpg');background-size:cover;background-position:center 30%"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,15,30,0.94) 0%,rgba(8,15,30,0.55) 44%,rgba(8,15,30,0.15) 100%)"></div>
+  <div style="position:relative;max-width:1280px;width:100%;margin:0 auto;padding:0 40px 56px">
+    <div data-reveal="" style="max-width:640px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#F0A98C;margin-bottom:20px">Summer highlight</div>
+      <h2 style="font-family:Inter;font-weight:200;font-size:clamp(38px,5.5vw,72px);line-height:0.96;letter-spacing:-0.03em;color:#fff;margin-bottom:22px">NewDay</h2>
+      <p style="font-size:21px;line-height:1.65;color:rgba(255,255,255,0.9);margin-bottom:30px">Every summer we head to the NewDay festival together as a youth group to spend a week getting to know Jesus, each other, and making great memories. This is a real highlight of our year.</p>
+      <a href="https://www.newdaygeneration.org/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0D1B3E;padding:16px 34px;border-radius:999px;font-family:Inter;font-size:18px;font-weight:600" style-hover="background:#A3C0E8">Find out more about NewDay <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer data-foot="" style="background:#060D1E;border-top:1px solid rgba(255,255,255,0.06);padding:64px 40px 30px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px" data-footgrid="">
+      <div data-footaddr="">
+        <img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto;margin-bottom:20px">
+        <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:16px">Middle Brook Centre<br>Middle Brook Street<br>Winchester, SO23 8DQ</div>
+        <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9">office@hopewinchester.org<br>01962 840800<br>Mon–Fri 9am–5pm</div>
+      </div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Visit</div><a href="Sunday.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Sunday</a><a href="New Here.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">New Here</a><a href="#top" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Families</a><a href="What's On.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">What's On</a></div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Learn</div><a href="About.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">About Us</a><a href="Teaching.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Teaching</a><a href="https://hopeinactionwinchester.squarespace.com/blog" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Blog</a></div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Connect</div><a href="Contact.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Contact</a><a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Give</a><a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">ChurchSuite</a><a href="https://www.middlebrookcentre.org" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Room Hire</a></div>
+    </div>
+    <div data-footpartners="" style="display:flex;justify-content:flex-end;align-items:center;gap:24px;margin-bottom:32px"><img src="assets/partners/commission-white.png" alt="Commission" style="height:42px;width:auto;opacity:0.85"><img src="assets/partners/ea-white.png" alt="Evangelical Alliance" style="height:18px;width:auto;opacity:0.85"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)">
+      <div style="font-family:Inter;font-size:15px;color:rgba(255,255,255,0.4);display:flex;gap:16px;flex-wrap:wrap;align-items:center">© Hope Church Winchester · Charity 1128609 · Company 6804892<a href="https://hopewinchester.sharepoint.com/:b:/s/HCWPolicies/IQAGnuNtyeoyQZRm6KLZ4g7nAdqSUT8G8u1n-_71NCfshbo?e=oFwDAn" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.55);font-size:15px">Safeguarding Policy</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:18px"><div style="display:flex;gap:16px">
+        <a href="https://www.facebook.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.75-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"></path></svg></a>
+        <a href="https://www.instagram.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.5)" stroke="none"></circle></svg></a>
+        <a href="https://www.youtube.com/@HopeChurchWinchester" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19 5 12 5 12 5s-7 0-8.8.2c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8C5 19 12 19 12 19s7 0 8.8-.2c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM10 15V9l5 3z"></path></svg></a>
+        <a href="https://open.spotify.com/show/6AJZWz4CNeD6rNZYUuAtZG" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.8-.87 7.08-.5 9.72 1.11.3.18.39.57.21.86zm1.23-2.74a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.5c3.63-1.1 8.15-.56 11.24 1.34.37.23.49.71.25 1.07zm.1-2.85C14.8 8.94 9.3 8.76 6.16 9.72a.94.94 0 1 1-.54-1.8c3.6-1.09 9.67-.88 13.48 1.38a.94.94 0 0 1-.96 1.61z"></path></svg></a>
+      </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { navSolid: false, menuOpen: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const solid = window.scrollY > 40;
+      if (solid !== this.state.navSolid) this.setState({ navSolid: solid });
+      const bg = document.querySelector('[data-hero-bg]');
+      if (bg) bg.style.transform = 'translateY(' + (window.scrollY * 0.18) + 'px)';
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => this.applyResponsive();
+    window.addEventListener('resize', this._onResize);
+    this.initReveals();
+    this.applyResponsive();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._revealFallback);
+  }
+  applyResponsive() {
+    const w = window.innerWidth;
+    const mobile = w < 1080;
+    const narrow = w < 560;
+    const set = (sel, cols) => document.querySelectorAll(sel).forEach(el => { el.style.gridTemplateColumns = cols; });
+    document.querySelectorAll('[data-grid2]').forEach(el => { el.style.gridTemplateColumns = mobile ? '1fr' : '1fr 1fr'; });
+    document.querySelectorAll('[data-leadgrid]').forEach(el => { el.style.gridTemplateColumns = mobile ? '1fr' : '1fr 1fr'; });
+    document.querySelectorAll('[data-agegrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? '1fr' : 'repeat(2,1fr)'; });
+    document.querySelectorAll('[data-youthgrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? '1fr' : (mobile ? 'repeat(2,1fr)' : 'repeat(3,1fr)'); });
+    document.querySelectorAll('[data-midgrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? '1fr' : (mobile ? 'repeat(2,1fr)' : 'repeat(3,1fr)'); });
+    document.querySelectorAll('[data-footgrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? 'repeat(2,1fr)' : (mobile ? '1fr 1fr' : '2fr 1fr 1fr 1fr'); el.style.gap = narrow ? '30px 22px' : '48px'; el.style.marginBottom = narrow ? '34px' : '44px'; });
+    document.querySelectorAll('[data-footaddr]').forEach(el => { el.style.gridColumn = narrow ? '1 / -1' : 'auto'; });
+    document.querySelectorAll('[data-foot]').forEach(el => { el.style.padding = narrow ? '46px 24px 28px' : '64px 40px 30px'; });
+    document.querySelectorAll('[data-footpartners]').forEach(el => { el.style.justifyContent = narrow ? 'flex-start' : 'flex-end'; });
+    document.querySelectorAll('[data-navlinks]').forEach(el => { el.style.display = mobile ? 'none' : 'flex'; });
+    document.querySelectorAll('[data-navctas]').forEach(el => { el.style.display = mobile ? 'none' : 'flex'; });
+    document.querySelectorAll('[data-hamburger]').forEach(el => { el.style.display = mobile ? 'inline-flex' : 'none'; });
+  }
+  initReveals() {
+    if (this._io) this._io.disconnect();
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity 0.7s cubic-bezier(0.2,0,0,1), transform 0.7s cubic-bezier(0.2,0,0,1)';
+    });
+    if (!('IntersectionObserver' in window)) { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); return; }
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; this._io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => this._io.observe(el));
+    clearTimeout(this._revealFallback);
+    this._revealFallback = setTimeout(() => { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); }, 1400);
+  }
+  renderVals() {
+    const navSolid = this.state.navSolid;
+    return {
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navStyle: 'position:fixed;top:0;left:0;right:0;z-index:300;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;transition:background .3s, backdrop-filter .3s;' +
+        (navSolid ? 'background:rgba(8,15,30,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)' : 'background:linear-gradient(to bottom,rgba(8,15,30,0.8),rgba(8,15,30,0.35) 60%,transparent)'),
+      menuStyle: 'position:fixed;top:74px;left:0;right:0;z-index:290;background:rgba(8,15,30,0.98);backdrop-filter:blur(16px);padding:24px 40px 32px;flex-direction:column;border-bottom:1px solid rgba(255,255,255,0.08);' + (this.state.menuOpen ? 'display:flex' : 'display:none'),
+    };
+  }
+}
+</script>
+</body>
+</html>

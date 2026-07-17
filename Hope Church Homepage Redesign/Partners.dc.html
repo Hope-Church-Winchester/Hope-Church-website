@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Light.ttf") format("truetype");font-weight:300;font-display:swap}
+@font-face{font-family:"Neue Montreal";src:url("_ds/hope-church-winchester-design-system-019e1327-8683-701c-b721-1bc57b4878a4/fonts/NeueMontreal-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Neue Montreal","Inter",system-ui,sans-serif;background:#0D1B3E;color:#232220;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:#3F5CAA;text-decoration:none}
+a:hover{color:#0D1B3E}
+::selection{background:#3F5CAA;color:#fff}
+.lift{transition:transform .35s cubic-bezier(0.2,0,0,1),box-shadow .35s cubic-bezier(0.2,0,0,1)}
+.lift:hover{transform:translateY(-6px)!important;box-shadow:0 18px 40px -18px rgba(13,27,62,0.45)}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="position:relative;background:#F4EBE1">
+
+<nav style="{{ navStyle }}">
+  <a href="Hope Homepage.dc.html" style="display:flex;align-items:center" aria-label="Hope Church Winchester — home"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto"></a>
+  <div style="display:none;gap:30px" data-navlinks="">
+    <a href="New Here.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">New Here</a>
+    <a href="Sunday.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Sunday</a>
+    <a href="What's On.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">What's On</a>
+    <a href="Families.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Families</a>
+    <a href="About.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">About</a>
+    <a href="Teaching.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Teaching</a>
+    <a href="Contact.dc.html" style="color:rgba(255,255,255,0.72);font-family:Inter;font-size:16px">Contact</a>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center" data-navctas="">
+    <a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="background:#fff;color:#0D1B3E;padding:10px 22px;border-radius:999px;font-family:Inter;font-size:15px;font-weight:600">Give</a>
+    <a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="background:transparent;color:#fff;padding:9px 20px;border-radius:999px;font-family:Inter;font-size:15px;font-weight:600;border:1.5px solid rgba(255,255,255,0.45)">ChurchSuite</a>
+  </div>
+  <button onClick="{{ toggleMenu }}" aria-label="Menu" data-hamburger="" style="display:none;background:transparent;border:none;cursor:pointer;padding:8px">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+  </button>
+</nav>
+
+<div style="{{ menuStyle }}">
+  <a href="New Here.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">New Here</a>
+  <a href="Sunday.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Sunday</a>
+  <a href="What's On.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">What's On</a>
+  <a href="Families.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Families</a>
+  <a href="About.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">About</a>
+  <a href="Teaching.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Teaching</a>
+  <a href="Contact.dc.html" onClick="{{ closeMenu }}" style="font-family:Inter;font-size:22px;color:rgba(255,255,255,0.8);padding:13px 0;border-bottom:1px solid rgba(255,255,255,0.08)">Contact</a>
+</div>
+
+<div id="top"></div>
+
+<!-- ===== 1 · HERO ===== -->
+<section data-screen-label="Partners Hero" style="position:relative;min-height:72vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#080F1E">
+  <div data-hero-bg="" style="position:absolute;left:0;right:0;top:-8%;bottom:-8%;background-image:url(assets/partners/hero.jpg);background-size:cover;background-position:center 35%"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(8,15,30,0.9),rgba(8,15,30,0.5) 55%,rgba(8,15,30,0.25))"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,15,30,0.85),transparent 48%)"></div>
+  <div style="position:relative;max-width:1280px;width:100%;margin:0 auto;padding:0 40px 8vh">
+    <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:22px">Partners</div>
+    <h1 style="font-family:Inter;font-weight:200;font-size:clamp(52px,8.4vw,116px);line-height:0.92;letter-spacing:-0.035em;color:#fff;margin:0">We don't do<br><span style="color:#A3C0E8">this alone.</span></h1>
+    <p style="max-width:640px;margin:26px 0 0;font-size:22px;line-height:1.6;color:rgba(255,255,255,0.85)">From our church family across the world to local charities serving Winchester, we partner with organisations who share our heart for the gospel and for our city. Here's who we work alongside, and why.</p>
+  </div>
+</section>
+
+<!-- ===== 2 · CHURCH FAMILY ===== -->
+<section data-screen-label="Church Family and Networks" style="background:#F4EBE1;padding:clamp(64px,9vw,110px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:44px;max-width:760px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#3F5CAA;margin-bottom:16px">Church family &amp; networks</div>
+      <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;color:#0D1B3E;margin-bottom:16px">The wider family we belong to</h2>
+      <p style="font-family:Inter;font-size:18px;line-height:1.65;color:rgba(35,34,32,0.62)">Hope Church doesn't exist in isolation. We're part of a global family of churches, networks and events that shape and support us.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" data-partnergrid="church-family">
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-new-frontiers" src="assets/partners/new-frontiers.png" shape="rect" fit="contain" placeholder="New Frontiers logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">New Frontiers</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">The global family of churches we belong to, planting churches and training leaders across the world.</p>
+        <a href="https://newfrontierstogether.org" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-commission" src="assets/partners/commission.jpg" shape="rect" fit="contain" placeholder="Commission logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">Commission</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">Our regional family of churches within Newfrontiers, working together on planting, leadership and mission.</p>
+        <a href="https://www.commission.global/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-newday" src="assets/partners/newday.jpg" shape="rect" fit="contain" placeholder="Newday logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">Newday</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">The Newfrontiers summer festival for young people, shaping the next generation of Christians.</p>
+        <a href="https://www.newdaygeneration.org/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-ea" src="assets/partners/evangelical-alliance.jpg" shape="rect" fit="contain" placeholder="Evangelical Alliance logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">Evangelical Alliance</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">The oldest and largest body uniting evangelical Christians and churches across the UK.</p>
+        <a href="https://www.eauk.org" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3 · SERVING WINCHESTER ===== -->
+<section data-screen-label="Serving Winchester" style="background:#0D1B3E;padding:clamp(64px,9vw,110px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:44px;max-width:760px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:16px">Serving Winchester</div>
+      <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:16px">Loving our city, practically</h2>
+      <p style="font-family:Inter;font-size:18px;line-height:1.65;color:rgba(255,255,255,0.72)">We support local charities doing the hands-on work of caring for people in crisis across our city and district.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" data-partnergrid="serving-winchester">
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-cap" src="assets/partners/cap.jpg" shape="rect" fit="contain" placeholder="CAP logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">CAP</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Christians Against Poverty — free, local debt counselling and money coaching, delivered through churches.</p>
+        <a href="https://capuk.org" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-beacon" src="assets/partners/beacon.jpg" shape="rect" fit="contain" placeholder="Winchester Beacon logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Winchester Beacon</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">A 365-day lifeline for people experiencing homelessness across Hampshire, offering shelter and a route back to independence.</p>
+        <a href="https://winchesterbeacon.org.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-basics-bank" src="assets/partners/basics-bank.jpg" shape="rect" fit="contain" placeholder="Winchester Basics Bank logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Winchester Basics Bank</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Providing emergency food and essentials to individuals and families in crisis across the district.</p>
+        <a href="https://winchesterbasicsbank.co.uk/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-street-pastors" src="assets/partners/street-pastors.jpg" shape="rect" fit="contain" placeholder="Street Pastors logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Street Pastors</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Church volunteers walking Winchester's streets at night, offering care, help and a listening ear.</p>
+        <a href="https://streetpastors.org.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-wpcc" src="assets/partners/wpcc.jpg" shape="rect" fit="contain" placeholder="Winchester Pregnancy Crisis Centre logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Winchester Pregnancy Crisis Centre</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">WPCC offers free, impartial counselling and support to those facing an unplanned pregnancy, miscarriage, stillbirth or abortion.</p>
+        <a href="https://www.winchesterpregnancycrisis.com/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-acts435" src="assets/partners/acts435.jpg" shape="rect" fit="contain" placeholder="Acts 435 logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Acts 435</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Connecting specific, practical needs with people who can meet them, one gift at a time.</p>
+        <a href="https://acts435.org.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-emmaus" src="assets/partners/emmaus.jpg" shape="rect" fit="contain" placeholder="Emmaus logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Emmaus</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Supporting people out of homelessness through meaningful work, community and a home.</p>
+        <a href="https://emmaus.org.uk/hampshire/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-miracle-street" src="assets/partners/miracle-street.jpg" shape="rect" fit="contain" placeholder="Miracle Street logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Miracle Street</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Sharing the good news of Jesus in creative, everyday ways across England and mainland Europe.</p>
+        <a href="https://miraclestreet.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 · GLOBAL MISSION ===== -->
+<section data-screen-label="Global Mission" style="background:#F4EBE1;padding:clamp(64px,9vw,110px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:44px;max-width:760px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#3F5CAA;margin-bottom:16px">Global mission</div>
+      <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;color:#0D1B3E;margin-bottom:16px">Reaching beyond our city</h2>
+      <p style="font-family:Inter;font-size:18px;line-height:1.65;color:rgba(35,34,32,0.62)">We give towards organisations tackling poverty and sharing the gospel around the world.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" data-partnergrid="global-mission">
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-world-vision" src="assets/partners/world-vision.jpg" shape="rect" fit="contain" placeholder="World Vision logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">World Vision</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">Child sponsorship and community development tackling the root causes of poverty worldwide.</p>
+        <a href="https://www.worldvision.org.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-compassion" src="assets/partners/compassion.jpg" shape="rect" fit="contain" placeholder="Compassion logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">Compassion</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">Releasing children from poverty in Jesus' name through long-term, local church partnerships.</p>
+        <a href="https://www.compassionuk.org" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 · TRAINING & SAFEGUARDING ===== -->
+<section data-screen-label="Training and Safeguarding" style="background:#0D1B3E;padding:clamp(64px,9vw,110px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:44px;max-width:760px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:16px">Training &amp; safeguarding</div>
+      <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:16px">Equipping leaders, protecting people</h2>
+      <p style="font-family:Inter;font-size:18px;line-height:1.65;color:rgba(255,255,255,0.72)">Organisations who help us train leaders well and keep our church a safe place for everyone.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" data-partnergrid="training-safeguarding">
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-uccf" src="assets/partners/uccf.jpg" shape="rect" fit="contain" placeholder="UCCF logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">UCCF</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Universities and Colleges Christian Fellowship — supporting Christian students to live and share their faith on campus.</p>
+        <a href="https://www.uccf.org.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-union" src="assets/partners/union.jpg" shape="rect" fit="contain" placeholder="Union School of Theology logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">Union School of Theology</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">Training leaders for the church through rigorous, local-church-based theological education.</p>
+        <a href="https://www.ust.ac.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-thirtyoneeight" src="assets/partners/thirtyoneeight.jpg" shape="rect" fit="contain" placeholder="thirtyone:eight logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#fff;margin-bottom:8px">thirtyone:eight</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin-bottom:18px;flex:1">The UK's leading independent Christian safeguarding charity, equipping us to protect vulnerable people.</p>
+        <a href="https://thirtyoneeight.org" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#A3C0E8">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 · LOCAL & INDEPENDENT ===== -->
+<section data-screen-label="Local and Independent" style="background:#F4EBE1;padding:clamp(64px,9vw,110px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="margin-bottom:44px;max-width:760px">
+      <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#3F5CAA;margin-bottom:16px">Local &amp; independent</div>
+      <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;color:#0D1B3E;margin-bottom:16px">Friends in the community</h2>
+      <p style="font-family:Inter;font-size:18px;line-height:1.65;color:rgba(35,34,32,0.62)">Local, independent businesses who support what we do.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" data-partnergrid="local-independent">
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-holy-fool" src="assets/partners/holy-fool.jpg" shape="rect" fit="contain" placeholder="Holy Fool Coffee logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">Holy Fool Coffee</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">A specialty coffee company training prison leavers and people overcoming social difficulty — profits fund the training.</p>
+        <a href="https://holyfoolcoffee.co.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(35,34,32,0.12);border-radius:16px;padding:24px">
+        <div style="aspect-ratio:5/3;width:100%;background:#fff;border:1px solid rgba(35,34,32,0.08);border-radius:10px;padding:0;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box">
+          <image-slot id="logo-cornish-bakery" src="assets/partners/cornish-bakery.jpg" shape="rect" fit="contain" placeholder="The Cornish Bakery logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-family:'Neue Montreal',Inter;font-size:19px;color:#232220;margin-bottom:8px">The Cornish Bakery</div>
+        <p style="font-family:Inter;font-size:15px;line-height:1.55;color:#5B564F;margin-bottom:18px;flex:1">A local food partner supporting Hope Street Cafe, our outreach ministry, supplying us with food for those living on the margins.</p>
+        <a href="https://thecornishbakery.com/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:Inter;font-size:14px;font-weight:600;color:#3F5CAA">Visit site<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3F5CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7 · HOPE IN ACTION ===== -->
+<section data-screen-label="Hope in Action" style="background:#0D1B3E;padding:clamp(64px,9vw,110px) 40px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px">
+      <div style="max-width:680px">
+        <div style="font-family:Inter;font-size:15px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#A3C0E8;margin-bottom:16px">Hope in Action</div>
+        <h2 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:16px">The people behind the partnerships</h2>
+        <p style="font-family:Inter;font-size:18px;line-height:1.65;color:rgba(255,255,255,0.72)">Our blog goes behind the logos — the stories of why we support these organisations and the people making a real difference across our city and beyond.</p>
+      </div>
+      <a href="https://hopeinactionwinchester.squarespace.com/blog" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:Inter;font-size:16px;font-weight:600;color:#A3C0E8;white-space:nowrap;padding-bottom:6px">Read the blog<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A3C0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    </div>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px" data-bloggrid="">
+      <a href="https://hopeinactionwinchester.squarespace.com/blog/a-church-on-wheels" target="_blank" rel="noopener noreferrer" data-reveal="" class="lift" style="display:flex;flex-direction:column;background:#162040;border:1px solid #1E2D50;border-radius:16px;overflow:hidden">
+        <div style="aspect-ratio:16/9;width:100%;background-image:url(assets/partners/blog-miracle-street.png);background-size:cover;background-position:center"></div>
+        <div style="padding:28px 28px 32px;flex:1;display:flex;flex-direction:column">
+          <div style="font-family:Inter;font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#A3C0E8;margin-bottom:12px">Featured story</div>
+          <h3 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:clamp(24px,2.6vw,32px);line-height:1.12;letter-spacing:-0.02em;color:#fff;margin-bottom:12px">The Gospel on Wheels</h3>
+          <p style="font-family:Inter;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.62);margin:0 0 16px">Hear how Miracle Street's converted double-decker bus is bringing the message of Jesus to vulnerable communities across Winchester and Southampton, partnering with local churches, councils and health services to reach the margins of society.</p>
+          <div style="font-family:Inter;font-size:14px;color:rgba(255,255,255,0.45);margin-top:auto">By Steve Lee</div>
+        </div>
+      </a>
+      <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px">
+        <a href="https://hopeinactionwinchester.squarespace.com/blog/street-pastors" target="_blank" rel="noopener noreferrer" data-reveal="" class="lift" style="display:flex;background:#162040;border:1px solid #1E2D50;border-radius:16px;overflow:hidden">
+          <div style="width:42%;flex-shrink:0;background-image:url(assets/partners/blog-street-pastors.jpg);background-size:cover;background-position:center"></div>
+          <div style="padding:22px 22px 24px;flex:1;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:Inter;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#A3C0E8;margin-bottom:8px">Street Pastors</div>
+            <h3 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:22px;line-height:1.15;letter-spacing:-0.01em;color:#fff;margin-bottom:8px">Six years on the streets</h3>
+            <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin:0 0 10px">A night out with the team caring for people on Winchester's streets.</p>
+            <div style="font-family:Inter;font-size:13px;color:rgba(255,255,255,0.45)">By Nigel Prior</div>
+          </div>
+        </a>
+        <a href="https://hopeinactionwinchester.squarespace.com/blog/wpcc" target="_blank" rel="noopener noreferrer" data-reveal="" class="lift" style="display:flex;background:#162040;border:1px solid #1E2D50;border-radius:16px;overflow:hidden">
+          <div style="width:42%;flex-shrink:0;background-image:url(assets/partners/blog-wpcc.png);background-size:cover;background-position:center"></div>
+          <div style="padding:22px 22px 24px;flex:1;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:Inter;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#A3C0E8;margin-bottom:8px">WPCC</div>
+            <h3 style="font-family:'Neue Montreal',Inter;font-weight:200;font-size:22px;line-height:1.15;letter-spacing:-0.01em;color:#fff;margin-bottom:8px">Support Without Judgment</h3>
+            <p style="font-family:Inter;font-size:15px;line-height:1.55;color:rgba(255,255,255,0.62);margin:0 0 10px">Meet the volunteers offering free, confidential support to anyone facing an unplanned pregnancy.</p>
+            <div style="font-family:Inter;font-size:13px;color:rgba(255,255,255,0.45)">By Emma Drake</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer data-foot="" style="background:#060D1E;border-top:1px solid rgba(255,255,255,0.06);padding:64px 40px 30px">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px" data-footgrid="">
+      <div data-footaddr="">
+        <img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto;margin-bottom:20px">
+        <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:16px">Middle Brook Centre<br>Middle Brook Street<br>Winchester, SO23 8DQ</div>
+        <div style="font-family:Inter;font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9">office@hopewinchester.org<br>01962 840800<br>Mon–Fri 9am–5pm</div>
+      </div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Visit</div><a href="Sunday.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Sunday</a><a href="New Here.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">New Here</a><a href="Families.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Families</a><a href="What's On.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">What's On</a></div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Learn</div><a href="About.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">About Us</a><a href="Teaching.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Teaching</a><a href="Partners.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Partners</a><a href="https://hopeinactionwinchester.squarespace.com/blog" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Blog</a></div>
+      <div><div style="font-family:Inter;font-size:13px;font-weight:600;color:rgba(255,255,255,0.32);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Connect</div><a href="Contact.dc.html" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Contact</a><a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">Give</a><a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:11px">ChurchSuite</a><a href="https://www.middlebrookcentre.org" target="_blank" rel="noopener noreferrer" style="display:block;font-family:Inter;font-size:16px;color:rgba(255,255,255,0.6)">Room Hire</a></div>
+    </div>
+    <div data-footpartners="" style="display:flex;justify-content:flex-end;align-items:center;gap:24px;margin-bottom:32px"><img src="assets/partners/commission-white.png" alt="Commission" style="height:42px;width:auto;opacity:0.85"><img src="assets/partners/ea-white.png" alt="Evangelical Alliance" style="height:18px;width:auto;opacity:0.85"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)">
+      <div style="font-family:Inter;font-size:15px;color:rgba(255,255,255,0.4);display:flex;gap:16px;flex-wrap:wrap;align-items:center">© Hope Church Winchester · Charity 1128609 · Company 6804892<a href="https://hopewinchester.sharepoint.com/:b:/s/HCWPolicies/IQAGnuNtyeoyQZRm6KLZ4g7nAdqSUT8G8u1n-_71NCfshbo?e=oFwDAn" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.55);font-size:15px">Safeguarding Policy</a></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:18px"><div style="display:flex;gap:16px">
+        <a href="https://www.facebook.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.75-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"></path></svg></a>
+        <a href="https://www.instagram.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.5)" stroke="none"></circle></svg></a>
+        <a href="https://www.youtube.com/@HopeChurchWinchester" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19 5 12 5 12 5s-7 0-8.8.2c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8C5 19 12 19 12 19s7 0 8.8-.2c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM10 15V9l5 3z"></path></svg></a><a href="https://open.spotify.com/show/6AJZWz4CNeD6rNZYUuAtZG" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.38-.48.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14 4.38-1.32 9.78-.66 13.5 1.62.36.18.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.1 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.32-1.32 11.34-1.02 15.72 1.56.54.3.72 1.02.42 1.56-.3.42-1.02.6-1.5.36z"></path></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { navSolid: true, menuOpen: false };
+  componentDidMount() {
+    this._onResize = () => this.applyResponsive();
+    window.addEventListener('resize', this._onResize);
+    this.applyResponsive();
+    this.initReveals();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    if (this._io) this._io.disconnect();
+    clearTimeout(this._revealFallback);
+  }
+  componentDidUpdate() { this.initReveals(); this.applyResponsive(); }
+  applyResponsive() {
+    const w = window.innerWidth;
+    const mobile = w < 1080;
+    const narrow = w < 560;
+    document.querySelectorAll('[data-partnergrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? '1fr' : (mobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)'); });
+    document.querySelectorAll('[data-bloggrid]').forEach(el => { el.style.gridTemplateColumns = mobile ? '1fr' : '1.5fr 1fr'; });
+    document.querySelectorAll('[data-footgrid]').forEach(el => { el.style.gridTemplateColumns = narrow ? 'repeat(2,1fr)' : (mobile ? '1fr 1fr' : '2fr 1fr 1fr 1fr'); el.style.gap = narrow ? '30px 22px' : '48px'; el.style.marginBottom = narrow ? '34px' : '44px'; });
+    document.querySelectorAll('[data-footaddr]').forEach(el => { el.style.gridColumn = narrow ? '1 / -1' : 'auto'; });
+    document.querySelectorAll('[data-foot]').forEach(el => { el.style.padding = narrow ? '46px 24px 28px' : '64px 40px 30px'; });
+    document.querySelectorAll('[data-footpartners]').forEach(el => { el.style.justifyContent = narrow ? 'flex-start' : 'flex-end'; });
+    document.querySelectorAll('[data-navlinks]').forEach(el => { el.style.display = mobile ? 'none' : 'flex'; });
+    document.querySelectorAll('[data-navctas]').forEach(el => { el.style.display = mobile ? 'none' : 'flex'; });
+    document.querySelectorAll('[data-hamburger]').forEach(el => { el.style.display = mobile ? 'inline-flex' : 'none'; });
+  }
+  initReveals() {
+    if (this._io) this._io.disconnect();
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach(el => {
+      if (el.dataset.revealed) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity 0.7s cubic-bezier(0.2,0,0,1), transform 0.7s cubic-bezier(0.2,0,0,1)';
+    });
+    if (!('IntersectionObserver' in window)) { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); return; }
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; e.target.dataset.revealed='1'; this._io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => { if (!el.dataset.revealed) this._io.observe(el); });
+    clearTimeout(this._revealFallback);
+    this._revealFallback = setTimeout(() => { els.forEach(el => { el.style.opacity='1'; el.style.transform='none'; }); }, 1400);
+  }
+  renderVals() {
+    const navSolid = this.state.navSolid;
+    return {
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      navStyle: 'position:fixed;top:0;left:0;right:0;z-index:300;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;transition:background .3s, backdrop-filter .3s;' +
+        (navSolid ? 'background:rgba(8,15,30,0.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)' : 'background:linear-gradient(to bottom,rgba(8,15,30,0.8),rgba(8,15,30,0.35) 60%,transparent)'),
+      menuStyle: 'position:fixed;top:74px;left:0;right:0;z-index:290;background:rgba(8,15,30,0.98);backdrop-filter:blur(16px);padding:24px 40px 32px;flex-direction:column;border-bottom:1px solid rgba(255,255,255,0.08);' + (this.state.menuOpen ? 'display:flex' : 'display:none'),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
