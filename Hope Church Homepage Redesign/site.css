@@ -21,6 +21,11 @@ body {
 }
 img { display: block; max-width: 100%; }
 iframe, video { max-width: 100%; }
+/* <picture> is only ever a WebP wrapper around an <img>. Make it layout-
+   transparent so images that fill their container (width/height:100%) size
+   against the real parent, not the wrapper — otherwise logos in fixed-ratio
+   boxes (e.g. CAP, Commission) overflow and get clipped. */
+picture { display: contents; }
 a { color: #3F5CAA; text-decoration: none; }
 a:hover { color: #0D1B3E; }
 ::selection { background: #3F5CAA; color: #fff; }
