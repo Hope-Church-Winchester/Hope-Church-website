@@ -20,6 +20,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { display: block; max-width: 100%; }
+iframe, video { max-width: 100%; }
 a { color: #3F5CAA; text-decoration: none; }
 a:hover { color: #0D1B3E; }
 ::selection { background: #3F5CAA; color: #fff; }
@@ -56,6 +57,50 @@ nav a:hover { color: inherit; }
     margin-bottom: 44px !important;
   }
 
+  /* ---- Page-specific content grids ----
+     These reproduce each page's original applyResponsive() so every module
+     collapses on mobile. mobile = < 1080px; the narrow (< 560px) block below
+     tightens the ones that go to a single column on phones. */
+
+  /* two-column layouts that stack to one column on mobile */
+  [data-leadgrid],   /* families: leader cards */
+  [data-capgrid],    /* what's on: CAP feature */
+  [data-currentgrid],/* teaching: current series */
+  [data-musicgrid],  /* teaching: worship music */
+  [data-catchgrid],  /* teaching: catch-up */
+  [data-bloggrid],   /* partners: blog */
+  [data-msggrid],    /* contact: message split */
+  [data-splitgrid]   /* contact: split rows */
+  { grid-template-columns: 1fr !important; }
+  [data-musicgrid] { gap: 32px !important; }
+
+  /* multi-column card grids -> 2 columns on mobile */
+  [data-agegrid],    /* families: age groups */
+  [data-youthgrid],  /* families: youth */
+  [data-midgrid],    /* families: midweek */
+  [data-mgrid],      /* what's on: midweek */
+  [data-seriesgrid], /* teaching: series archive */
+  [data-couplegrid], /* about: couples */
+  [data-partnergrid],/* partners: partner logos */
+  [data-connectgrid],/* contact: connect */
+  [data-trusteegrid] /* about: trustees */
+  { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* dense people grids -> 3 columns on mobile */
+  [data-peoplegrid], /* about: staff/team */
+  [data-eldergrid]   /* about: elders */
+  { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* sunday hero info strip -> 2 columns on mobile */
+  [data-herostrip] { grid-template-columns: 1fr 1fr !important; }
+
+  /* Sunday map: aspect-ratio 21/9 + min-height:280px forces the box wider than
+     a phone screen. Drop the min-height and use a friendlier ratio on mobile. */
+  [style*="aspect-ratio: 21 / 9"] {
+    aspect-ratio: 3 / 2 !important;
+    min-height: 0 !important;
+  }
+
   /* Hero sections are bottom-aligned on desktop. On mobile the eyebrow/title/
      description wrap to many more lines and nearly fill the hero, so bottom
      alignment shoves the top of the content up under the fixed 74px nav.
@@ -80,4 +125,23 @@ nav a:hover { color: inherit; }
   [data-footaddr] { grid-column: 1 / -1 !important; }
   [data-foot] { padding: 46px 24px 28px !important; }
   [data-footpartners] { justify-content: flex-start !important; }
+
+  /* On the narrowest phones these collapse fully to a single column. */
+  [data-agegrid],
+  [data-youthgrid],
+  [data-midgrid],
+  [data-mgrid],
+  [data-seriesgrid],
+  [data-couplegrid],
+  [data-partnergrid],
+  [data-connectgrid],
+  [data-herostrip],
+  [data-catchcards],  /* teaching: catch-up cards */
+  [data-formrow]      /* contact: form rows */
+  { grid-template-columns: 1fr !important; }
+
+  /* dense people grids -> 2 columns on the narrowest phones */
+  [data-peoplegrid],
+  [data-eldergrid],
+  [data-trusteegrid] { grid-template-columns: repeat(2, 1fr) !important; }
 }
