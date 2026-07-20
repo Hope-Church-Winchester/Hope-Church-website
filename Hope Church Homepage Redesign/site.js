@@ -88,22 +88,39 @@
      Fires a named event when a visitor clicks one of the key actions, so we
      can track them as conversions in Google Analytics. No-ops if GA isn't
      loaded (e.g. blocked by an ad blocker). */
-  function eventForHref(h) {
-    if (!h) return null;
-    var l = h.toLowerCase();
-    if (l.indexOf("mailto:") === 0) return "email_click";
-    if (l.indexOf("/donate/") > -1) return "give_click";        // ChurchSuite giving
-    if (l.indexOf("churchsuite.co") > -1) return "churchsuite_click"; // .com + .co.uk
-    if (l.indexOf("youtube.com") > -1 || l.indexOf("youtu.be") > -1) return "watch_click";
-    if (l.indexOf("spotify.com") > -1 || l.indexOf("pod.link") > -1 ||
-        l.indexOf("soundcloud.com") > -1 || l.indexOf("podcasts.apple.com") > -1) return "listen_click";
-    if (l.indexOf("facebook.com") > -1 || l.indexOf("instagram.com") > -1) return "social_click";
+  function eventForLink(a) {
+    var h = (a.getAttribute("href") || "").toLowerCase();
+    var t = (a.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+    var tn = t.replace(/['‘’`]/g, ""); // apostrophe-stripped, e.g. "im new"
+    var cs = h.indexOf("churchsuite") > -1;
+
+    // Newcomer-intent actions (highest value for integration)
+    if (h.indexOf("mailto:welcome@") > -1) return "welcome_email";
+    if ((t.indexOf("plan") > -1 && t.indexOf("visit") > -1) ||
+        tn.indexOf("im new") > -1) return "plan_visit";
+
+    // Giving
+    if (h.indexOf("/donate/") > -1) return "give_click";
+
+    // ChurchSuite sign-ups
+    if (cs && h.indexOf("addressbook/form") > -1) return "newsletter_signup";
+    if (cs && (h.indexOf("/events/") > -1 || h.indexOf("/-/forms/") > -1)) return "event_signup";
+    if (cs) return "churchsuite_click";
+
+    // Teaching engagement
+    if (h.indexOf("youtube.com") > -1 || h.indexOf("youtu.be") > -1) return "watch_click";
+    if (h.indexOf("spotify.com") > -1 || h.indexOf("pod.link") > -1 ||
+        h.indexOf("soundcloud.com") > -1 || h.indexOf("podcasts.apple.com") > -1) return "listen_click";
+
+    // General contact / social
+    if (h.indexOf("mailto:") === 0) return "email_click";
+    if (h.indexOf("facebook.com") > -1 || h.indexOf("instagram.com") > -1) return "social_click";
     return null;
   }
   document.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
     if (!a) return;
-    var name = eventForHref(a.getAttribute("href"));
+    var name = eventForLink(a);
     if (!name || typeof window.gtag !== "function") return;
     window.gtag("event", name, {
       link_url: a.href,
