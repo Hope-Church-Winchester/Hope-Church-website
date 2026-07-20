@@ -83,4 +83,33 @@
       });
     }, 1600);
   }
+
+  /* ---- GA4 conversion events ----
+     Fires a named event when a visitor clicks one of the key actions, so we
+     can track them as conversions in Google Analytics. No-ops if GA isn't
+     loaded (e.g. blocked by an ad blocker). */
+  function eventForHref(h) {
+    if (!h) return null;
+    var l = h.toLowerCase();
+    if (l.indexOf("mailto:") === 0) return "email_click";
+    if (l.indexOf("/donate/") > -1) return "give_click";        // ChurchSuite giving
+    if (l.indexOf("churchsuite.co") > -1) return "churchsuite_click"; // .com + .co.uk
+    if (l.indexOf("youtube.com") > -1 || l.indexOf("youtu.be") > -1) return "watch_click";
+    if (l.indexOf("spotify.com") > -1 || l.indexOf("pod.link") > -1 ||
+        l.indexOf("soundcloud.com") > -1 || l.indexOf("podcasts.apple.com") > -1) return "listen_click";
+    if (l.indexOf("facebook.com") > -1 || l.indexOf("instagram.com") > -1) return "social_click";
+    return null;
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var name = eventForHref(a.getAttribute("href"));
+    if (!name || typeof window.gtag !== "function") return;
+    window.gtag("event", name, {
+      link_url: a.href,
+      link_text: (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 100),
+      page_path: location.pathname,
+      transport_type: "beacon"
+    });
+  }, true);
 })();
