@@ -27,9 +27,9 @@
     Array.prototype.forEach.call(menu.querySelectorAll("a"), function (a) {
       a.addEventListener("click", function () { setMenu(false); });
     });
-    // Close the menu if the viewport grows back to desktop.
+    // Close the menu if the viewport grows back to where the desktop nav shows.
     window.addEventListener("resize", function () {
-      if (window.innerWidth >= 1080) setMenu(false);
+      if (window.innerWidth > 1160) setMenu(false);
     });
   }
 

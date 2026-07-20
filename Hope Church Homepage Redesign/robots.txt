@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hope-church-winchester.github.io/Hope-Church-website/sitemap.xml
