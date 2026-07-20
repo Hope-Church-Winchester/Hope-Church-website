@@ -41,12 +41,18 @@ a:hover { color: #0D1B3E; }
 [data-navctas] a:hover, [data-navlinks] a:hover, [data-menu] a:hover,
 nav a:hover { color: inherit; }
 
-/* ================= mobile: viewport < 1080px ================= */
-@media (max-width: 1079px) {
+/* The 8 top-nav links don't fit on one line below ~1120px and their text
+   starts to wrap awkwardly. Switch to the hamburger a little above the mobile
+   breakpoint so the desktop nav never gets cramped, and never wrap link text. */
+[data-navlinks] a { white-space: nowrap; }
+@media (max-width: 1160px) {
   [data-navlinks] { display: none !important; }
   [data-navctas]  { display: none !important; }
   [data-hamburger] { display: inline-flex !important; }
+}
 
+/* ================= mobile: viewport < 1080px ================= */
+@media (max-width: 1079px) {
   [data-newsgrid] {
     grid-template-columns: 1fr !important;
     text-align: center !important;
