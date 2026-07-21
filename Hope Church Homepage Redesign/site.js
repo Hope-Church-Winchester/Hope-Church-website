@@ -84,6 +84,34 @@
     }, 1600);
   }
 
+  /* ---- What's On category filter ----
+     Show/hide the activity cards by category. The buttons carry data-filter
+     and the cards data-cat; "all" shows everything. (This behaviour used to
+     live in the old runtime and is reproduced here.) */
+  var filterBar = document.querySelector("[data-filterbar]");
+  if (filterBar) {
+    var filterBtns = Array.prototype.slice.call(filterBar.querySelectorAll("[data-filter]"));
+    var mcards = Array.prototype.slice.call(document.querySelectorAll("[data-mcard]"));
+    var setActiveFilter = function (active) {
+      filterBtns.forEach(function (b) {
+        var on = b === active;
+        b.style.background = on ? "rgb(13, 27, 62)" : "transparent";
+        b.style.color = on ? "rgb(255, 255, 255)" : "rgb(35, 34, 32)";
+        b.style.borderColor = on ? "rgb(13, 27, 62)" : "rgba(35, 34, 32, 0.2)";
+      });
+    };
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var f = btn.getAttribute("data-filter");
+        setActiveFilter(btn);
+        mcards.forEach(function (card) {
+          var show = f === "all" || card.getAttribute("data-cat") === f;
+          card.style.display = show ? "flex" : "none";
+        });
+      });
+    });
+  }
+
   /* ---- GA4 conversion events ----
      Fires a named event when a visitor clicks one of the key actions, so we
      can track them as conversions in Google Analytics. No-ops if GA isn't
