@@ -158,3 +158,156 @@
     });
   }, true);
 })();
+
+/* ---- Site search (client-side, no external service) ----
+   Injects a magnifier button into the nav (desktop) and mobile menu, plus a
+   search overlay. Searches a prebuilt search-index.json of every page. */
+(function () {
+  "use strict";
+  var nav = document.querySelector("nav");
+  if (!nav) return;
+
+  var css = document.createElement("style");
+  css.textContent = [
+    "[data-search-open]{background:transparent;border:none;cursor:pointer;padding:8px;display:inline-flex;align-items:center;color:#fff}",
+    ".hcs-menu-btn{color:rgba(255,255,255,.8);font-family:Inter;font-size:22px;font-weight:400;padding:13px 0;display:flex;align-items:center;gap:12px;background:none;border:none;border-bottom:1px solid rgba(255,255,255,.08);width:100%;text-align:left;cursor:pointer}",
+    "#hcs{position:fixed;inset:0;z-index:500;display:none}",
+    "#hcs.open{display:block}",
+    "#hcs .hcs-bd{position:absolute;inset:0;background:rgba(8,15,30,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}",
+    "#hcs .hcs-panel{position:relative;max-width:640px;margin:11vh auto 0;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(8,15,30,.6);max-height:78vh;display:flex;flex-direction:column}",
+    "#hcs .hcs-top{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid rgba(35,34,32,.1)}",
+    "#hcs input{flex:1;border:none;outline:none;font-family:Inter;font-size:19px;color:#0D1B3E;background:transparent;-webkit-appearance:none}",
+    "#hcs input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}",
+    "#hcs .hcs-close{background:none;border:none;cursor:pointer;color:#8a837a;font-size:20px;line-height:1;padding:4px}",
+    "#hcs .hcs-results{overflow-y:auto;padding:6px 0}",
+    "#hcs a.hcs-hit{display:block;padding:14px 20px;text-decoration:none;border-bottom:1px solid rgba(35,34,32,.06)}",
+    "#hcs a.hcs-hit:hover{background:rgba(63,92,170,.06)}",
+    "#hcs .hcs-hit-t{font-family:Inter;font-weight:600;font-size:16px;color:#0D1B3E;margin-bottom:3px}",
+    "#hcs .hcs-hit-s{font-family:Inter;font-size:14px;line-height:1.5;color:#5b5650}",
+    "#hcs .hcs-hit-s mark{background:rgba(163,192,232,.55);color:inherit;padding:0 1px;border-radius:2px}",
+    "#hcs .hcs-msg{padding:22px 20px;font-family:Inter;font-size:15px;color:#8a837a}",
+    "@media (max-width:559px){#hcs .hcs-panel{margin:0;max-width:none;height:100%;max-height:none;border-radius:0}}"
+  ].join("");
+  document.head.appendChild(css);
+
+  var MAG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>';
+
+  var ctas = nav.querySelector("[data-navctas]");
+  if (ctas) {
+    var db = document.createElement("button");
+    db.setAttribute("data-search-open", "");
+    db.setAttribute("aria-label", "Search the site");
+    db.innerHTML = MAG;
+    db.style.order = "-1";
+    ctas.insertBefore(db, ctas.firstChild);
+  }
+  var menu = document.querySelector("[data-menu]");
+  if (menu) {
+    var mb = document.createElement("button");
+    mb.className = "hcs-menu-btn";
+    mb.setAttribute("data-search-open", "");
+    mb.innerHTML = MAG + "<span>Search</span>";
+    menu.insertBefore(mb, menu.firstChild);
+  }
+
+  var ov = document.createElement("div");
+  ov.id = "hcs";
+  ov.innerHTML =
+    '<div class="hcs-bd" data-search-close></div>' +
+    '<div class="hcs-panel" role="dialog" aria-modal="true" aria-label="Search">' +
+      '<div class="hcs-top"><span style="color:#8a837a;display:inline-flex;flex-shrink:0">' + MAG + '</span>' +
+        '<input type="search" placeholder="Search the site…" aria-label="Search the site">' +
+        '<button class="hcs-close" data-search-close aria-label="Close search">✕</button>' +
+      '</div>' +
+      '<div class="hcs-results"></div>' +
+    '</div>';
+  document.body.appendChild(ov);
+
+  var input = ov.querySelector("input");
+  var results = ov.querySelector(".hcs-results");
+  var index = null, loading = false;
+
+  function openSearch() {
+    if (menu) menu.style.display = "none";
+    var burger = document.querySelector("[data-hamburger]");
+    if (burger) burger.setAttribute("aria-expanded", "false");
+    ov.classList.add("open");
+    document.documentElement.style.overflow = "hidden";
+    setTimeout(function () { input.focus(); }, 30);
+    if (!index && !loading) loadIndex();
+    else render(input.value);
+  }
+  function closeSearch() {
+    ov.classList.remove("open");
+    document.documentElement.style.overflow = "";
+  }
+  function loadIndex() {
+    loading = true;
+    results.innerHTML = '<div class="hcs-msg">Loading…</div>';
+    fetch("search-index.json").then(function (r) { return r.json(); }).then(function (d) {
+      index = d; loading = false; render(input.value);
+    }).catch(function () {
+      results.innerHTML = '<div class="hcs-msg">Search is unavailable right now.</div>';
+    });
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  function snippet(text, terms) {
+    var low = text.toLowerCase(), pos = -1, i;
+    for (i = 0; i < terms.length; i++) {
+      var p = low.indexOf(terms[i]);
+      if (p > -1 && (pos < 0 || p < pos)) pos = p;
+    }
+    if (pos < 0) pos = 0;
+    var start = Math.max(0, pos - 50), end = Math.min(text.length, pos + 120);
+    var frag = (start > 0 ? "…" : "") + text.slice(start, end) + (end < text.length ? "…" : "");
+    frag = esc(frag);
+    terms.forEach(function (t) {
+      if (!t) return;
+      var re = new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig");
+      frag = frag.replace(re, "<mark>$1</mark>");
+    });
+    return frag;
+  }
+
+  function render(q) {
+    q = (q || "").trim().toLowerCase();
+    if (!index) return;
+    if (q.length < 2) { results.innerHTML = '<div class="hcs-msg">Type to search across the site.</div>'; return; }
+    var terms = q.split(/\s+/).filter(Boolean);
+    var scored = index.map(function (e) {
+      var t = e.title.toLowerCase(), h = (e.headings || []).join(" ").toLowerCase(), c = e.content.toLowerCase();
+      var score = 0, all = true;
+      terms.forEach(function (term) {
+        var inT = t.indexOf(term) > -1, inH = h.indexOf(term) > -1, inC = c.indexOf(term) > -1;
+        if (inT) score += 10;
+        if (inH) score += 4;
+        var m = c.split(term).length - 1;
+        score += Math.min(m, 5);
+        if (!(inT || inH || inC)) all = false;
+      });
+      return { e: e, score: all ? score : 0 };
+    }).filter(function (x) { return x.score > 0; }).sort(function (a, b) { return b.score - a.score; });
+    if (!scored.length) { results.innerHTML = '<div class="hcs-msg">No results for “' + esc(q) + '”.</div>'; return; }
+    results.innerHTML = scored.slice(0, 8).map(function (x) {
+      return '<a class="hcs-hit" href="' + x.e.url + '"><div class="hcs-hit-t">' + esc(x.e.title) +
+        '</div><div class="hcs-hit-s">' + snippet(x.e.content, terms) + "</div></a>";
+    }).join("");
+  }
+
+  document.addEventListener("click", function (e) {
+    var o = e.target.closest ? e.target.closest("[data-search-open]") : null;
+    if (o) { e.preventDefault(); openSearch(); return; }
+    var c = e.target.closest ? e.target.closest("[data-search-close]") : null;
+    if (c) { e.preventDefault(); closeSearch(); }
+  });
+  input.addEventListener("input", function () { render(input.value); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && ov.classList.contains("open")) closeSearch();
+  });
+})();
