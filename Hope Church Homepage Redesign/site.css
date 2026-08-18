@@ -28,6 +28,13 @@ iframe, video { max-width: 100%; }
 picture { display: contents; }
 a { color: #3F5CAA; text-decoration: none; }
 a:hover { color: #0D1B3E; }
+
+/* Footer partner logos sit in a flex row. Each logo is a fixed-height,
+   width:auto <img> inside an <a>. Without this the anchors shrink on narrow
+   screens and squash the logos (distorted aspect ratio); pin them so they
+   keep their natural proportions and let the row wrap instead. */
+[data-footpartners] { flex-wrap: wrap; }
+[data-footpartners] > a { flex-shrink: 0; }
 ::selection { background: #3F5CAA; color: #fff; }
 #dc-root, #dc-root > .sc-host { min-height: 100%; }
 
@@ -135,7 +142,7 @@ nav a:hover { color: inherit; }
   }
   [data-footaddr] { grid-column: 1 / -1 !important; }
   [data-foot] { padding: 46px 24px 28px !important; }
-  [data-footpartners] { justify-content: flex-start !important; }
+  [data-footpartners] { justify-content: flex-start !important; gap: 20px !important; }
 
   /* On the narrowest phones these collapse fully to a single column. */
   [data-agegrid],
