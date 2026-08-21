@@ -48,13 +48,25 @@ a:hover { color: #0D1B3E; }
 [data-navctas] a:hover, [data-navlinks] a:hover, [data-menu] a:hover,
 nav a:hover { color: inherit; }
 
-/* The 9 top-nav links + logo + CTAs get cramped on one line below ~1240px —
-   the logo ends up almost touching the first link. Switch to the hamburger
-   while there's still comfortable room, never wrap link text, and never let
-   the logo be squeezed (flex-shrink:0 keeps it at its natural aspect ratio). */
+/* The nav carries 9 links + logo + 2 CTAs. Never wrap link text, and never
+   let the logo be squeezed (flex-shrink:0 keeps its natural aspect ratio). */
 [data-navlinks] a { white-space: nowrap; }
 nav > a { flex-shrink: 0; }
-@media (max-width: 1240px) {
+
+/* Above ~1220px the nav has room to breathe at its full spacing. Between the
+   mobile breakpoint and there it would start to crowd the logo, so tighten the
+   link spacing, type and nav padding just in that band — the full desktop menu
+   still fits comfortably on one line (no hamburger on desktop). */
+@media (min-width: 1080px) and (max-width: 1220px) {
+  nav { padding-left: 24px !important; padding-right: 24px !important; }
+  [data-navlinks] { gap: 16px !important; }
+  [data-navlinks] a { font-size: 15px !important; }
+  [data-navctas] { gap: 6px !important; }
+}
+
+/* Below 1080px the page switches to its mobile layout, so the nav collapses to
+   the hamburger here too — a horizontal 9-link bar would be out of place. */
+@media (max-width: 1079px) {
   [data-navlinks] { display: none !important; }
   [data-navctas]  { display: none !important; }
   [data-hamburger] { display: inline-flex !important; }
