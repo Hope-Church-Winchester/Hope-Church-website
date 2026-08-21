@@ -48,11 +48,13 @@ a:hover { color: #0D1B3E; }
 [data-navctas] a:hover, [data-navlinks] a:hover, [data-menu] a:hover,
 nav a:hover { color: inherit; }
 
-/* The 8 top-nav links don't fit on one line below ~1120px and their text
-   starts to wrap awkwardly. Switch to the hamburger a little above the mobile
-   breakpoint so the desktop nav never gets cramped, and never wrap link text. */
+/* The 9 top-nav links + logo + CTAs get cramped on one line below ~1240px —
+   the logo ends up almost touching the first link. Switch to the hamburger
+   while there's still comfortable room, never wrap link text, and never let
+   the logo be squeezed (flex-shrink:0 keeps it at its natural aspect ratio). */
 [data-navlinks] a { white-space: nowrap; }
-@media (max-width: 1160px) {
+nav > a { flex-shrink: 0; }
+@media (max-width: 1240px) {
   [data-navlinks] { display: none !important; }
   [data-navctas]  { display: none !important; }
   [data-hamburger] { display: inline-flex !important; }
