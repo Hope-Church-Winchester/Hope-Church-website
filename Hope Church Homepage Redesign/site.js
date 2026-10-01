@@ -378,4 +378,44 @@
     if (menu) menu.style.top = "74px";
     try { localStorage.setItem(KEY, "1"); } catch (e) {}
   });
+  bar.querySelector(".kco-inner").addEventListener("click", function (ev) {
+    if (window.__hopeScrollToHash && document.getElementById("kco-christmas")) {
+      ev.preventDefault();
+      window.__hopeScrollToHash("#kco-christmas");
+    }
+  });
+})();
+
+/* ---- Make #hash links land below the fixed nav/banner (and survive late layout shifts) ---- */
+(function () {
+  "use strict";
+  function fixedOffset() {
+    var nav = document.querySelector("nav");
+    var banner = document.getElementById("kco-banner");
+    var h = 0;
+    if (nav) h += nav.getBoundingClientRect().height;
+    if (banner) h += banner.getBoundingClientRect().height;
+    return h + 14;
+  }
+  function scrollToEl(el, smooth) {
+    var y = el.getBoundingClientRect().top + window.pageYOffset - fixedOffset();
+    window.scrollTo({ top: y < 0 ? 0 : y, behavior: smooth ? "smooth" : "auto" });
+  }
+  window.__hopeScrollToHash = function (hash) {
+    var el;
+    try { el = document.querySelector(hash); } catch (e) { return false; }
+    if (!el) return false;
+    scrollToEl(el, true);
+    if (history.pushState) history.pushState(null, "", hash);
+    return true;
+  };
+  if (location.hash && location.hash.length > 1) {
+    window.addEventListener("load", function () {
+      var el;
+      try { el = document.querySelector(location.hash); } catch (e) { return; }
+      if (!el) return;
+      setTimeout(function () { scrollToEl(el, false); }, 80);
+      setTimeout(function () { scrollToEl(el, false); }, 450);
+    });
+  }
 })();
