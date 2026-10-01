@@ -322,13 +322,13 @@
   var menu = document.querySelector("[data-menu]");
   var css = document.createElement("style");
   css.textContent = [
-    "#kco-banner{position:fixed;top:0;left:0;right:0;z-index:400;background:rgb(219,56,53)}",
+    "#kco-banner{position:fixed;top:0;left:0;right:0;z-index:400;background:rgb(13,27,62);border-bottom:1px solid rgba(255,255,255,0.12)}",
     "#kco-banner .kco-inner{display:flex;align-items:center;justify-content:center;gap:16px;max-width:1200px;margin:0 auto;min-height:44px;padding:9px 56px;color:#fff;text-decoration:none;font-family:Inter,system-ui,sans-serif}",
     "#kco-banner .kco-inner:hover .kco-cta{opacity:0.85}",
     "#kco-banner img{height:26px;width:auto;flex:none;display:block}",
     "#kco-banner .kco-text{font-size:15px;line-height:1.25}",
     "#kco-banner .kco-text b{font-weight:700}",
-    "#kco-banner .kco-cta{font-weight:700;text-decoration:underline;white-space:nowrap}",
+    "#kco-banner .kco-cta{font-weight:700;text-decoration:underline;white-space:nowrap;color:rgb(163,192,232)}",
     "#kco-banner .cta-short{display:none}",
     "#kco-banner .kco-sub{display:none}",
     "#kco-banner .kco-close{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:none;border:0;color:#fff;cursor:pointer;padding:8px;line-height:0;opacity:0.9}",
@@ -354,7 +354,7 @@
   bar.innerHTML =
     '<span class="kco-note kco-note-l">♪ ♫</span>' +
     '<a class="kco-inner" href="whats-on">' +
-      '<img src="assets/kco-logo-white.png" alt="Kings Chamber Orchestra">' +
+      '<img src="assets/kco-logo-red.png" alt="Kings Chamber Orchestra">' +
       '<span class="kco-text">' +
         '<span class="kco-full"><b>King’s Chamber Orchestra</b> Christmas concerts · Sat 28 Nov · 3pm and 7.30pm</span>' +
         '<span class="kco-sub"><b>Christmas concerts</b><br>Sat 28 November</span>' +
