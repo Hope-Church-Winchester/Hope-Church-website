@@ -353,7 +353,7 @@
   bar.id = "kco-banner";
   bar.innerHTML =
     '<span class="kco-note kco-note-l">♪ ♫</span>' +
-    '<a class="kco-inner" href="whats-on">' +
+    '<a class="kco-inner" href="whats-on#kco-christmas">' +
       '<img src="assets/kco-logo-red.png" alt="Kings Chamber Orchestra">' +
       '<span class="kco-text">' +
         '<span class="kco-full"><b>King’s Chamber Orchestra</b> Christmas concerts · Sat 28 Nov · 3pm and 7.30pm</span>' +
