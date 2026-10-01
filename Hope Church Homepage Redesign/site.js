@@ -311,3 +311,71 @@
     if (e.key === "Escape" && ov.classList.contains("open")) closeSearch();
   });
 })();
+
+
+/* ---- KCO Christmas promo banner (seasonal) — remove this whole block after the concerts ---- */
+(function () {
+  "use strict";
+  var KEY = "kco-xmas-2026-dismissed";
+  try { if (localStorage.getItem(KEY)) return; } catch (e) {}
+  var nav = document.querySelector("nav");
+  var menu = document.querySelector("[data-menu]");
+  var css = document.createElement("style");
+  css.textContent = [
+    "#kco-banner{position:fixed;top:0;left:0;right:0;z-index:400;background:rgb(13,27,62);border-bottom:1px solid rgba(255,255,255,0.12)}",
+    "#kco-banner .kco-inner{display:flex;align-items:center;justify-content:center;gap:16px;max-width:1200px;margin:0 auto;min-height:44px;padding:9px 56px;color:#fff;text-decoration:none;font-family:Inter,system-ui,sans-serif}",
+    "#kco-banner .kco-inner:hover .kco-cta{opacity:0.85}",
+    "#kco-banner img{height:26px;width:auto;flex:none;display:block}",
+    "#kco-banner .kco-text{font-size:15px;line-height:1.25}",
+    "#kco-banner .kco-text b{font-weight:700}",
+    "#kco-banner .kco-cta{font-weight:700;text-decoration:underline;white-space:nowrap;color:rgb(163,192,232)}",
+    "#kco-banner .cta-short{display:none}",
+    "#kco-banner .kco-sub{display:none}",
+    "#kco-banner .kco-close{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:none;border:0;color:#fff;cursor:pointer;padding:8px;line-height:0;opacity:0.9}",
+    "#kco-banner .kco-close:hover{opacity:1}",
+    "#kco-banner .kco-note{position:absolute;top:50%;transform:translateY(-50%);font-size:20px;opacity:0.5;pointer-events:none;color:#fff}",
+    "#kco-banner .kco-note-l{left:24px}",
+    "#kco-banner .kco-note-r{right:60px}",
+    "@media (max-width:1024px){#kco-banner .kco-note{display:none}}",
+    "@media (max-width:640px){" +
+      "#kco-banner .kco-inner{justify-content:flex-start;gap:12px;padding:8px 44px 8px 14px}" +
+      "#kco-banner .kco-full{display:none}" +
+      "#kco-banner .kco-sub{display:block}" +
+      "#kco-banner .cta-long{display:none}" +
+      "#kco-banner .cta-short{display:inline}" +
+      "#kco-banner img{height:32px}" +
+      "#kco-banner .kco-text{font-size:14px}" +
+      "#kco-banner .kco-cta{margin-left:auto}" +
+    "}"
+  ].join("");
+  document.head.appendChild(css);
+  var bar = document.createElement("div");
+  bar.id = "kco-banner";
+  bar.innerHTML =
+    '<span class="kco-note kco-note-l">♪ ♫</span>' +
+    '<a class="kco-inner" href="whats-on">' +
+      '<img src="assets/kco-logo-red.png" alt="Kings Chamber Orchestra">' +
+      '<span class="kco-text">' +
+        '<span class="kco-full"><b>King’s Chamber Orchestra</b> Christmas concerts · Sat 28 Nov · 3pm and 7.30pm</span>' +
+        '<span class="kco-sub"><b>Christmas concerts</b><br>Sat 28 November</span>' +
+      '</span>' +
+      '<span class="kco-cta"><span class="cta-long">Get tickets</span><span class="cta-short">Tickets</span> →</span>' +
+    '</a>' +
+    '<span class="kco-note kco-note-r">♫ ♪</span>' +
+    '<button class="kco-close" type="button" aria-label="Dismiss"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg></button>';
+  document.body.appendChild(bar);
+  function reflow() {
+    var h = bar.offsetHeight || 44;
+    if (nav) nav.style.top = h + "px";
+    if (menu) menu.style.top = (h + 74) + "px";
+  }
+  reflow();
+  window.addEventListener("resize", reflow);
+  bar.querySelector(".kco-close").addEventListener("click", function (ev) {
+    ev.preventDefault(); ev.stopPropagation();
+    if (bar.parentNode) bar.parentNode.removeChild(bar);
+    if (nav) nav.style.top = "0px";
+    if (menu) menu.style.top = "74px";
+    try { localStorage.setItem(KEY, "1"); } catch (e) {}
+  });
+})();
