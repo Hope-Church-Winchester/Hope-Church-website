@@ -53,7 +53,8 @@ nav.solid{background:rgba(9,16,29,.96);backdrop-filter:blur(12px)}
 .navlinks a{color:rgba(255,255,255,.72);font-size:16px}
 .navlinks a:hover{color:#fff}
 .navlinks a{white-space:nowrap}
-@media(max-width:1240px){.navlinks{gap:14px}.navlinks a{font-size:15px}.navctas{gap:6px}}
+nav>a{flex-shrink:0}
+@media(min-width:1280px){.navlinks{gap:14px}.navlinks a{font-size:15px}.navctas{gap:6px}}
 .navctas{display:flex;gap:8px;align-items:center}
 .hamb{display:none;background:transparent;border:none;cursor:pointer;padding:8px}
 .menu{position:fixed;top:74px;left:0;right:0;z-index:290;background:rgba(7,14,27,.98);backdrop-filter:blur(16px);padding:24px clamp(20px,5vw,40px) 32px;flex-direction:column;border-bottom:1px solid var(--line);display:none}
@@ -136,7 +137,7 @@ footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:64px
 .footbar{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line);font-size:15px;color:rgba(255,255,255,.4)}
 /* star */
 .star{display:block}
-@media(max-width:1079px){
+@media(max-width:1279px){
   .navlinks,.navctas{display:none}
   .hamb{display:inline-flex}
 }

@@ -53,20 +53,19 @@ nav a:hover { color: inherit; }
 [data-navlinks] a { white-space: nowrap; }
 nav > a { flex-shrink: 0; }
 
-/* Above ~1220px the nav has room to breathe at its full spacing. Between the
-   mobile breakpoint and there it would start to crowd the logo, so tighten the
-   link spacing, type and nav padding just in that band — the full desktop menu
-   still fits comfortably on one line (no hamburger on desktop). */
-@media (min-width: 1080px) and (max-width: 1220px) {
+/* The nav now carries 11 links (incl. the seasonal Christmas link) + logo + 2
+   CTAs. On wide desktop (>=1280px) keep the links on one line at a tightened
+   spacing and type size. Below that there is not enough room without the links
+   colliding with the CTAs and squashing the logo, so the nav collapses to the
+   hamburger. */
+@media (min-width: 1280px) {
   nav { padding-left: 24px !important; padding-right: 24px !important; }
-  [data-navlinks] { gap: 16px !important; }
+  [data-navlinks] { gap: 14px !important; }
   [data-navlinks] a { font-size: 15px !important; }
   [data-navctas] { gap: 6px !important; }
 }
 
-/* Below 1080px the page switches to its mobile layout, so the nav collapses to
-   the hamburger here too — a horizontal 9-link bar would be out of place. */
-@media (max-width: 1079px) {
+@media (max-width: 1279px) {
   [data-navlinks] { display: none !important; }
   [data-navctas]  { display: none !important; }
   [data-hamburger] { display: inline-flex !important; }
