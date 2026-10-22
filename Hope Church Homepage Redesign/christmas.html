@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en-GB"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R1TWMKKRNM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R1TWMKKRNM');
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<title>Christmas at Hope Church Winchester</title>
+<meta name="description" content="Good news of great joy. Join us at Hope Church Winchester this Christmas for carol services, King's Chamber Orchestra concerts, Advent and Christmas Day. Everyone welcome.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0C1526; --navy-2:#111c31; --navy-deep:#070E1B;
+  --cream:#E7DDCE; --cream-2:#EFE8DC;
+  --cream-text:#DCD0BF; --ink:#131B2A; --ink-soft:#434d60;
+  --gold:#C6A775;
+  --muted:rgba(230,221,206,0.72); --faint:rgba(230,221,206,0.5);
+  --line:rgba(230,221,206,0.14);
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--sans);background:var(--navy);color:var(--cream-text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.sec{padding:clamp(64px,9vw,118px) 0}
+.lift{transition:transform .35s cubic-bezier(.2,0,0,1),box-shadow .35s cubic-bezier(.2,0,0,1)}
+.lift:hover{transform:translateY(-6px);box-shadow:0 20px 44px -20px rgba(0,0,0,.55)}
+.eyebrow{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.h-display{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.01em;color:var(--cream)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:17px;font-weight:600;padding:15px 30px;border-radius:999px;transition:transform .25s,background .25s,color .25s,border-color .25s;cursor:pointer;border:1.5px solid transparent}
+.btn-solid{background:var(--cream);color:var(--ink)}
+.btn-solid:hover{transform:translateY(-2px);background:#fff}
+.btn-outline{background:transparent;color:var(--cream);border-color:rgba(230,221,206,.4)}
+.btn-outline:hover{border-color:var(--cream);transform:translateY(-2px)}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,40px);transition:background .3s,backdrop-filter .3s;background:linear-gradient(rgba(7,14,27,.82),rgba(7,14,27,.35) 60%,transparent)}
+nav.solid{background:rgba(9,16,29,.96);backdrop-filter:blur(12px)}
+.navlinks{display:flex;gap:22px}
+.navlinks a{color:rgba(255,255,255,.72);font-size:16px}
+.navlinks a:hover{color:#fff}
+.navlinks a{white-space:nowrap}
+@media(max-width:1240px){.navlinks{gap:14px}.navlinks a{font-size:15px}.navctas{gap:6px}}
+.navctas{display:flex;gap:8px;align-items:center}
+.hamb{display:none;background:transparent;border:none;cursor:pointer;padding:8px}
+.menu{position:fixed;top:74px;left:0;right:0;z-index:290;background:rgba(7,14,27,.98);backdrop-filter:blur(16px);padding:24px clamp(20px,5vw,40px) 32px;flex-direction:column;border-bottom:1px solid var(--line);display:none}
+.menu a{font-size:22px;color:rgba(255,255,255,.82);padding:13px 0;border-bottom:1px solid var(--line)}
+/* hero */
+.hero{position:relative;background:var(--navy-deep)}
+.hero picture,.hero img{width:100%;height:auto;display:block}
+.scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--cream-text);opacity:.9;animation:bob 2.4s ease-in-out infinite}
+.scrollcue span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+/* intro */
+.lede{font-size:clamp(18px,2.1vw,21px);line-height:1.72;color:var(--muted);max-width:720px}
+/* cards */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{background:var(--navy-2);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.card-pad{padding:30px 30px 32px}
+.card h3{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.08;color:var(--cream);margin-bottom:12px}
+.meta{font-family:var(--sans);font-size:14.5px;font-weight:600;letter-spacing:.02em;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.card p{font-size:16px;line-height:1.62;color:var(--muted)}
+.ticket{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-size:15.5px;font-weight:600;color:var(--cream);border-bottom:1.5px solid var(--gold);padding-bottom:2px}
+/* cream band */
+.band{background:var(--cream);color:var(--ink);border-radius:18px;padding:clamp(22px,3.5vw,30px) clamp(24px,4vw,40px);display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:space-between}
+.band .eyebrow{color:#9a7b45}
+/* schedule (editorial) */
+.month{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:34px 0 4px}
+.month:first-of-type{margin-top:0}
+.srow{display:grid;grid-template-columns:104px 1fr auto;gap:6px 20px;align-items:baseline;padding:17px 2px;border-bottom:1px dashed rgba(230,221,206,.18)}
+a.srow:hover{background:rgba(230,221,206,.03)}
+.rdate{font-size:18px;font-weight:700;color:var(--cream);white-space:nowrap}
+.rdate.gold{color:var(--gold)}
+.rsup{font-size:13.5px;color:var(--faint);margin-bottom:2px}
+.rtitle{font-size:18px;font-weight:600;color:var(--cream-text);line-height:1.3}
+.rtitle.na{font-weight:400;font-style:italic;color:var(--faint)}
+.rtime{font-size:15px;color:var(--muted);white-space:nowrap;text-align:right}
+.pill{display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:3px 10px;vertical-align:middle}
+/* photos */
+.photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--navy-2);margin:0}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.introgrid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(30px,5vw,58px);align-items:center;text-align:left}
+.introphotos{display:grid;gap:16px}
+.introphotos .photo{aspect-ratio:4/3}
+.introphotos .photo:nth-child(1) img{object-position:center 52%}
+.introphotos .photo:nth-child(2) img{object-position:center 34%}
+.visitgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,52px);align-items:stretch}
+.visitgrid>div{min-width:0}
+.visitgrid .photo{min-height:100%}
+.visitgrid .photo img{object-position:center 24%}
+.factpanel{background:var(--navy-2);border:1px solid var(--line);border-radius:20px;padding:28px 30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 28px}
+.factpanel .v{overflow-wrap:anywhere}
+@media(max-width:560px){.factpanel{grid-template-columns:1fr;gap:18px}}
+.sharegrid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(28px,5vw,56px);align-items:center;text-align:left}
+.sharegrid .photo{aspect-ratio:3/4}
+.sharegrid .photo img{object-position:center 20%}
+.sharegrid .share{justify-content:flex-start}
+@media(max-width:860px){
+  .introgrid{grid-template-columns:1fr;text-align:center}
+  .introphotos{grid-template-columns:1fr 1fr;margin-top:8px}
+  .visitgrid{grid-template-columns:1fr}
+  .visitgrid .photo{min-height:0;aspect-ratio:4/3}
+  .sharegrid{grid-template-columns:1fr;text-align:center}
+  .sharegrid .photo{aspect-ratio:4/3;order:-1;max-width:430px;margin:0 auto}
+  .sharegrid .share{justify-content:center}
+}
+/* visit */
+.infogrid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.fact{margin-bottom:22px}
+.fact .k{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.fact .v{font-size:17px;line-height:1.6;color:var(--muted)}
+/* share */
+.share{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.sbtn{display:inline-flex;align-items:center;gap:9px;background:var(--navy-2);border:1px solid var(--line);color:var(--cream-text);border-radius:999px;padding:12px 20px;font-size:15px;font-weight:600;cursor:pointer;transition:border-color .25s,transform .25s}
+.sbtn:hover{border-color:rgba(230,221,206,.45);transform:translateY(-2px)}
+/* footer */
+footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:64px clamp(20px,5vw,40px) 30px}
+.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;max-width:1180px;margin-left:auto;margin-right:auto}
+.footgrid a{color:rgba(255,255,255,.6)}
+.footgrid a:hover{color:#fff}
+.foot-h{font-size:13px;font-weight:600;color:rgba(255,255,255,.32);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
+.foot-link{display:block;font-size:16px;color:rgba(255,255,255,.6);margin-bottom:11px}
+.footbar{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line);font-size:15px;color:rgba(255,255,255,.4)}
+/* star */
+.star{display:block}
+@media(max-width:1079px){
+  .navlinks,.navctas{display:none}
+  .hamb{display:inline-flex}
+}
+@media(max-width:760px){
+  .grid2{grid-template-columns:1fr}
+  .infogrid{grid-template-columns:1fr;gap:28px}
+  .footgrid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:560px){
+  .footgrid{grid-template-columns:1fr}
+  .srow{grid-template-columns:92px 1fr;gap:3px 16px}
+  .srow .rtime{grid-column:2;text-align:left;margin-top:3px}
+}
+[data-reveal]{will-change:opacity,transform}
+@media(max-width:560px){
+  .ctarow{flex-direction:column;align-items:stretch}
+  .ctarow .btn{width:100%;justify-content:center}
+}
+</style>
+<!-- SEO -->
+<link rel="canonical" href="https://hopewinchester.org/christmas">
+<meta name="theme-color" content="#0C1526">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hope Church Winchester">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Christmas at Hope Church Winchester">
+<meta property="og:description" content="Good news of great joy. Join us at Hope Church Winchester this Christmas for carol services, King's Chamber Orchestra concerts, Advent and Christmas Day. Everyone welcome.">
+<meta property="og:url" content="https://hopewinchester.org/christmas">
+<meta property="og:image" content="https://hopewinchester.org/assets/christmas-hero-wide.jpg">
+<meta property="og:image:alt" content="Christmas at Hope Church Winchester: Good News of Great Joy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Christmas at Hope Church Winchester">
+<meta name="twitter:description" content="Good news of great joy. Join us at Hope Church Winchester this Christmas.">
+<meta name="twitter:image" content="https://hopewinchester.org/assets/christmas-hero-wide.jpg">
+<!-- /SEO -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="xstar">
+<polygon points="120,120 104.69,83.04 120.00,14.00" fill="#D7CEBE"/><polygon points="120,120 120.00,14.00 135.31,83.04" fill="#A99E8A"/>
+<polygon points="120,120 135.31,83.04 194.95,45.05" fill="#D7CEBE"/><polygon points="120,120 194.95,45.05 156.96,104.69" fill="#A99E8A"/>
+<polygon points="120,120 156.96,104.69 226.00,120.00" fill="#D7CEBE"/><polygon points="120,120 226.00,120.00 156.96,135.31" fill="#A99E8A"/>
+<polygon points="120,120 156.96,135.31 194.95,194.95" fill="#D7CEBE"/><polygon points="120,120 194.95,194.95 135.31,156.96" fill="#A99E8A"/>
+<polygon points="120,120 135.31,156.96 120.00,226.00" fill="#D7CEBE"/><polygon points="120,120 120.00,226.00 104.69,156.96" fill="#A99E8A"/>
+<polygon points="120,120 104.69,156.96 45.05,194.95" fill="#D7CEBE"/><polygon points="120,120 45.05,194.95 83.04,135.31" fill="#A99E8A"/>
+<polygon points="120,120 83.04,135.31 14.00,120.00" fill="#D7CEBE"/><polygon points="120,120 14.00,120.00 83.04,104.69" fill="#A99E8A"/>
+<polygon points="120,120 83.04,104.69 45.05,45.05" fill="#D7CEBE"/><polygon points="120,120 45.05,45.05 104.69,83.04" fill="#A99E8A"/>
+<circle cx="120" cy="120" r="4" fill="#ECE6DA"/></g></defs></svg>
+
+<nav id="nav">
+  <a href="/" aria-label="Hope Church Winchester home"><picture><source type="image/webp" srcset="assets/logo-white.webp"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto"></picture></a>
+  <div class="navlinks">
+    <a href="#top" style="color:#C6A775;font-weight:600;padding-bottom:3px;border-bottom:2px solid #C6A775">Christmas</a>
+    <a href="new-here">New Here</a>
+    <a href="sunday">Sunday</a>
+    <a href="whats-on">What's On</a>
+    <a href="families">Families</a>
+    <a href="students">Students</a>
+    <a href="serve">Serve</a>
+    <a href="about">About</a>
+    <a href="teaching">Teaching</a>
+    <a href="partners">Partners</a>
+    <a href="contact">Contact</a>
+  </div>
+  <div class="navctas">
+    <a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" class="btn btn-solid" style="padding:10px 22px;font-size:15px">Give</a>
+    <a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding:9px 20px;font-size:15px">ChurchSuite</a>
+  </div>
+  <button class="hamb" aria-label="Menu" data-hamburger><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg></button>
+</nav>
+<div class="menu" data-menu>
+  <a href="#top" style="color:#C6A775;font-weight:600">Christmas</a>
+  <a href="new-here">New Here</a>
+  <a href="sunday">Sunday</a>
+  <a href="whats-on">What's On</a>
+  <a href="families">Families</a>
+  <a href="students">Students</a>
+  <a href="serve">Serve</a>
+  <a href="about">About</a>
+  <a href="teaching">Teaching</a>
+  <a href="partners">Partners</a>
+  <a href="contact">Contact</a>
+  <div style="display:flex;gap:10px;margin-top:22px">
+    <a href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer" class="btn btn-solid" style="flex:1;justify-content:center">Give</a>
+    <a href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex:1;justify-content:center">ChurchSuite</a>
+  </div>
+</div>
+<div id="top"></div>
+
+<h1 class="vh">Christmas at Hope Church Winchester: Good News of Great Joy</h1>
+
+<!-- HERO -->
+<section class="hero">
+  <picture>
+    <source media="(min-width:820px)" type="image/webp" srcset="assets/christmas-hero-wide.webp">
+    <source media="(min-width:820px)" srcset="assets/christmas-hero-wide.jpg">
+    <source type="image/webp" srcset="assets/christmas-hero-tall.webp">
+    <img src="assets/christmas-hero-tall.jpg" alt="Good News of Great Joy. The Christmas Story. A silver star ornament on a deep navy background.">
+  </picture>
+  <a href="#schedule" class="scrollcue" aria-label="Scroll to service times"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+</section>
+
+<!-- INTRO -->
+<section class="sec">
+  <div class="wrap">
+    <div class="introgrid">
+      <div>
+        <svg class="star" viewBox="0 0 240 240" width="58" height="58" style="margin-bottom:22px" aria-hidden="true" data-reveal><use href="#xstar"/></svg>
+        <div class="eyebrow" data-reveal>Christmas at Hope Church Winchester</div>
+        <h2 class="h-display" style="font-size:clamp(32px,4.4vw,56px);margin:16px 0 22px" data-reveal>Come and celebrate the good news of great joy</h2>
+        <p class="lede" data-reveal>The first Christmas began with an angel bringing “good news of great joy for all people”. This is the birth of Jesus, God with us. Two thousand years on, that same joy is ours to celebrate.</p>
+        <p class="lede" style="margin-top:18px" data-reveal>Whether you're exploring faith for the first time, coming home for the season, or looking for a church family to belong to, there's a warm welcome for you at Hope this Christmas.</p>
+        <div class="ctarow" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" data-reveal>
+          <a href="#schedule" class="btn btn-solid">See the full programme <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <a href="#visit" class="btn btn-outline">Plan your visit</a>
+        </div>
+      </div>
+      <div class="introphotos" data-reveal>
+        <figure class="photo"><picture><source type="image/webp" srcset="assets/christmas-vibe-5.webp"><img src="assets/christmas-vibe-5.jpg" alt="The worship band leading carols beside the Christmas tree at Hope Church" loading="lazy" decoding="async"></picture></figure>
+        <figure class="photo"><picture><source type="image/webp" srcset="assets/christmas-vibe-4.webp"><img src="assets/christmas-vibe-4.jpg" alt="Singers worshipping together during a carol service at Hope Church" loading="lazy" decoding="async"></picture></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAROL SERVICES -->
+<section class="sec" id="carols" style="background:var(--navy-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="band" data-reveal style="margin-bottom:40px">
+      <div>
+        <div class="eyebrow">You're invited · Sunday 20 December</div>
+        <div style="font-family:var(--serif);font-weight:700;font-size:clamp(24px,3.4vw,34px);color:var(--ink);margin-top:6px">The Carol Services</div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card lift" data-reveal>
+        <div class="card-pad">
+          <div class="meta"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Sun 20 Dec · 10am–11.30am</div>
+          <h3>‘All In’ Carol Service</h3>
+          <p>A joyful, all-ages celebration for the whole family with much-loved carols, the Christmas story, and a few festive surprises.</p>
+        </div>
+      </div>
+      <div class="card lift" data-reveal>
+        <div class="card-pad">
+          <div class="meta"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Sun 20 Dec · 7.30pm–9pm</div>
+          <h3>Contemporary Carol Service</h3>
+          <p>A modern evening of contemporary carols, candlelight and reflection as we welcome the Saviour's birth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KCO CONCERTS -->
+<section class="sec" id="concerts">
+  <div class="wrap">
+    <div style="text-align:center;max-width:720px;margin:0 auto 42px">
+      <div class="eyebrow" data-reveal>Ticketed · Saturday 28 November</div>
+      <h2 class="h-display" style="font-size:clamp(30px,4.4vw,50px);margin:16px 0 18px" data-reveal>Kick off the season in song</h2>
+      <p class="lede" style="margin:0 auto" data-reveal>The King's Chamber Orchestra return to Hope for two unforgettable concerts. Book early, they fill up fast.</p>
+    </div>
+    <div class="grid2">
+      <a href="https://hopewinchester.churchsuite.com/events/rz36uf8r" target="_blank" rel="noopener noreferrer" class="card lift" data-reveal>
+        <div style="aspect-ratio:3/2;overflow:hidden"><picture><source type="image/webp" srcset="assets/kco-teddy.webp"><img src="assets/kco-teddy.jpg" alt="Teddy Bears' Concert with the King's Chamber Orchestra" style="width:100%;height:100%;object-fit:cover"></picture></div>
+        <div class="card-pad">
+          <div class="meta">Sat 28 Nov · 3pm–3.50pm · £7 (under 3s free)</div>
+          <h3>Teddy Bears' Concert</h3>
+          <p>A joyful, interactive afternoon concert for children and families. Bring your favourite teddy for music, laughter and a few surprises. A warm, relaxed welcome for all ages.</p>
+          <span class="ticket">Book tickets <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </div>
+      </a>
+      <a href="https://hopewinchester.churchsuite.com/events/czn19vtw" target="_blank" rel="noopener noreferrer" class="card lift" data-reveal>
+        <div style="aspect-ratio:3/2;overflow:hidden"><picture><source type="image/webp" srcset="assets/kco-christmas.webp"><img src="assets/kco-christmas.jpg" alt="Fireside Christmas Concert with the King's Chamber Orchestra" style="width:100%;height:100%;object-fit:cover"></picture></div>
+        <div class="card-pad">
+          <div class="meta">Sat 28 Nov · 7pm–10pm · £14</div>
+          <h3>Fireside Christmas Concert</h3>
+          <p>An evening of festive favourites and carols by candlelight with the full orchestra. A beautiful, warm start to the Christmas season for friends and family alike.</p>
+          <span class="ticket">Book tickets <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE (editorial) -->
+<section class="sec" id="schedule" style="background:var(--navy-deep);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:20px;margin-bottom:40px;flex-wrap:wrap" data-reveal>
+      <svg class="star" viewBox="0 0 240 240" width="58" height="58" aria-hidden="true"><use href="#xstar"/></svg>
+      <div>
+        <div class="eyebrow">Save the dates</div>
+        <h2 class="h-display" style="font-size:clamp(28px,4vw,46px);margin-top:6px">Join us this Christmas season</h2>
+      </div>
+    </div>
+
+    <div class="month" data-reveal>November</div>
+    <a class="srow" href="https://hopewinchester.churchsuite.com/events/rz36uf8r" target="_blank" rel="noopener noreferrer" data-reveal>
+      <div class="rdate">Sat 28</div>
+      <div><div class="rsup">King's Chamber Orchestra</div><div class="rtitle">Teddy concert <span class="pill">Ticketed</span></div></div>
+      <div class="rtime">3pm–3.50pm</div>
+    </a>
+    <a class="srow" href="https://hopewinchester.churchsuite.com/events/czn19vtw" target="_blank" rel="noopener noreferrer" data-reveal>
+      <div class="rdate">Sat 28</div>
+      <div><div class="rsup">King's Chamber Orchestra</div><div class="rtitle">Fireside concert <span class="pill">Ticketed</span></div></div>
+      <div class="rtime">7pm–10pm</div>
+    </a>
+    <div class="srow" data-reveal>
+      <div class="rdate">Sun 29</div>
+      <div><div class="rtitle">Advent begins: Nothing is impossible with God</div></div>
+      <div class="rtime">10am–11.30am</div>
+    </div>
+
+    <div class="month" data-reveal>December</div>
+    <div class="srow" data-reveal>
+      <div class="rdate">Sun 6</div>
+      <div><div class="rtitle">Mercy from generation to generation</div></div>
+      <div class="rtime">10am–11.30am</div>
+    </div>
+    <div class="srow" data-reveal>
+      <div class="rdate">Sun 13</div>
+      <div><div class="rtitle">Light in the darkness</div></div>
+      <div class="rtime">10am–11.30am</div>
+    </div>
+    <div class="srow" data-reveal>
+      <div class="rdate gold">Sun 20</div>
+      <div><div class="rtitle">‘All In’ carol service</div></div>
+      <div class="rtime">10am–11.30am</div>
+    </div>
+    <div class="srow" data-reveal>
+      <div class="rdate gold">Sun 20</div>
+      <div><div class="rtitle">Contemporary carol service</div></div>
+      <div class="rtime">7.30pm–9pm</div>
+    </div>
+    <div class="srow" data-reveal>
+      <div class="rdate gold">Fri 25</div>
+      <div><div class="rtitle">Christmas Day celebration</div></div>
+      <div class="rtime">10am–11am</div>
+    </div>
+    <div class="srow" data-reveal>
+      <div class="rdate">Sun 27</div>
+      <div><div class="rtitle na">No Sunday service</div></div>
+      <div class="rtime"></div>
+    </div>
+
+    <div class="month" data-reveal>January</div>
+    <div class="srow" data-reveal style="border-bottom:none">
+      <div class="rdate">Sun 3</div>
+      <div><div class="rtitle">New Year's message</div></div>
+      <div class="rtime">10am–11.30am</div>
+    </div>
+
+    <p style="margin-top:30px;font-size:15px;color:var(--faint);text-align:center">All at the Middle Brook Centre, Winchester. Everyone welcome. No need to book for Sunday services.</p>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec" id="visit">
+  <div class="wrap">
+    <div class="visitgrid">
+      <figure class="photo" data-reveal><picture><source type="image/webp" srcset="assets/christmas-vibe-1.webp"><img src="assets/christmas-vibe-1.jpg" alt="A speaker welcoming the congregation at a Christmas service at Hope Church" loading="lazy" decoding="async"></picture></figure>
+      <div data-reveal>
+        <div class="eyebrow">Planning your visit</div>
+        <h2 class="h-display" style="font-size:clamp(28px,3.8vw,44px);margin:15px 0 18px">However you come, you're welcome</h2>
+        <p class="lede" style="font-size:19px">Come exactly as you are. Our services are relaxed and friendly, and you'll always find a hot drink and a friendly face. If it's your first time, look out for our welcome team, they'd love to say hello.</p>
+        <div class="ctarow" style="display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 30px">
+          <a href="https://www.google.com/maps/search/?api=1&query=Middle+Brook+Centre+Winchester+SO23+8DQ" target="_blank" rel="noopener noreferrer" class="btn btn-solid">Get directions</a>
+          <a href="new-here" class="btn btn-outline">New here? Start here</a>
+        </div>
+        <div class="factpanel">
+          <div class="fact" style="margin:0"><div class="k">Where</div><div class="v">Middle Brook Centre, Middle Brook Street, Winchester, SO23 8DQ</div></div>
+          <div class="fact" style="margin:0"><div class="k">Getting here</div><div class="v">Just off the High Street, a short walk from the city's main car parks and bus station.</div></div>
+          <div class="fact" style="margin:0"><div class="k">Sundays</div><div class="v">Our regular gathering is 10am–11.30am, plus the Christmas services listed above.</div></div>
+          <div class="fact" style="margin:0"><div class="k">Get in touch</div><div class="v"><a href="mailto:office@hopewinchester.org" style="color:var(--cream);border-bottom:1px solid var(--gold)">office@hopewinchester.org</a> · 01962 840800</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHARE -->
+<section class="sec" id="share" style="background:var(--navy-deep);border-top:1px solid var(--line)">
+  <div class="wrap">
+   <div class="sharegrid">
+    <figure class="photo" data-reveal><picture><source type="image/webp" srcset="assets/christmas-vibe-3.webp"><img src="assets/christmas-vibe-3.jpg" alt="A speaker welcoming the congregation at a Christmas service" loading="lazy" decoding="async"></picture></figure>
+    <div>
+    <div class="eyebrow" data-reveal>Pass it on</div>
+    <h2 class="h-display" style="font-size:clamp(26px,3.6vw,42px);margin:12px 0 16px" data-reveal>Invite someone to Christmas</h2>
+    <p class="lede" style="margin:0 0 28px" data-reveal>Know someone who'd love a warm welcome this Christmas? Share this page. There's room for everyone.</p>
+    <div class="share" data-reveal>
+      <button class="sbtn" id="natbtn" style="display:none"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>Share…</button>
+      <button class="sbtn" id="copybtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><span id="copytxt">Copy link</span></button>
+      <a class="sbtn" href="https://wa.me/?text=Good%20news%20of%20great%20joy.%20Join%20us%20for%20Christmas%20at%20Hope%20Church%20Winchester%3A%20https%3A%2F%2Fhopewinchester.org%2Fchristmas" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-5.6c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.6 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.2-.3 0-.4.1-.6l.4-.5.3-.5a.5.5 0 0 0 0-.5c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 5 8.8a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.4 3.9c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1c.5-.1 1.5-.6 1.7-1.2s.2-1.1.2-1.2-.2-.2-.5-.3z"></path></svg>WhatsApp</a>
+      <a class="sbtn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopewinchester.org%2Fchristmas" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.75-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"></path></svg>Facebook</a>
+      <a class="sbtn" href="mailto:?subject=Christmas%20at%20Hope%20Church%20Winchester&body=Good%20news%20of%20great%20joy.%20I%20thought%20you%20might%20like%20to%20join%20me%20for%20Christmas%20at%20Hope%20Church%20Winchester.%20Here's%20what's%20on%3A%20https%3A%2F%2Fhopewinchester.org%2Fchristmas"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>Email</a>
+    </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footgrid">
+    <div>
+      <picture><source type="image/webp" srcset="assets/logo-white.webp"><img src="assets/logo-white.png" alt="Hope Church Winchester" style="height:26px;width:auto;margin-bottom:20px"></picture>
+      <div style="font-size:16px;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:16px">Middle Brook Centre<br>Middle Brook Street<br>Winchester, SO23 8DQ</div>
+      <div style="font-size:16px;color:rgba(255,255,255,.55);line-height:1.9"><a href="mailto:office@hopewinchester.org">office@hopewinchester.org</a><br>01962 840800<br>Mon–Fri 9am–5pm</div>
+    </div>
+    <div><div class="foot-h">Visit</div><a class="foot-link" href="sunday">Sunday</a><a class="foot-link" href="new-here">New Here</a><a class="foot-link" href="families">Families</a><a class="foot-link" href="whats-on">What's On</a><a class="foot-link" href="serve">Serve</a></div>
+    <div><div class="foot-h">Learn</div><a class="foot-link" href="about">About Us</a><a class="foot-link" href="teaching">Teaching</a><a class="foot-link" href="partners">Partners</a></div>
+    <div><div class="foot-h">Connect</div><a class="foot-link" href="contact">Contact</a><a class="foot-link" href="https://hopewinchester.churchsuite.com/donate/fund/y4kw8yml" target="_blank" rel="noopener noreferrer">Give</a><a class="foot-link" href="https://hopewinchester.churchsuite.com/" target="_blank" rel="noopener noreferrer">ChurchSuite</a></div>
+  </div>
+  <div class="footbar">
+    <div>© Hope Church Winchester · Charity 1128609 · Company 6804892</div>
+    <div style="display:flex;gap:16px">
+      <a href="https://www.facebook.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.75-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"></path></svg></a>
+      <a href="https://www.instagram.com/hopechurchwinchester" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.5)" stroke="none"></circle></svg></a>
+      <a href="https://www.youtube.com/@HopeChurchWinchester" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19 5 12 5 12 5s-7 0-8.8.2c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8C5 19 12 19 12 19s7 0 8.8-.2c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM10 15V9l5 3z"></path></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){ if(window.scrollY>40){nav.classList.add('solid');}else{nav.classList.remove('solid');} };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  var burger=document.querySelector('[data-hamburger]'), menu=document.querySelector('[data-menu]');
+  if(burger&&menu){burger.addEventListener('click',function(){menu.style.display=(menu.style.display==='flex')?'none':'flex';});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.style.display='none';});});}
+  var els=[].slice.call(document.querySelectorAll('[data-reveal]'));
+  if('IntersectionObserver' in window){
+    els.forEach(function(e){e.style.opacity='0';e.style.transform='translateY(18px)';e.style.transition='opacity .7s ease, transform .7s cubic-bezier(.2,0,0,1)';});
+    var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.style.opacity='1';en.target.style.transform='none';io.unobserve(en.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e);});
+  }
+  var nb=document.getElementById('natbtn');
+  if(nb&&navigator.share){nb.style.display='inline-flex';nb.addEventListener('click',function(){navigator.share({title:'Christmas at Hope Church Winchester',text:'Good news of great joy, for everyone. Come and celebrate with us at Hope Church this Christmas.',url:'https://hopewinchester.org/christmas'}).catch(function(){});});}
+  var cb=document.getElementById('copybtn');
+  if(cb){cb.addEventListener('click',function(){
+    var url='https://hopewinchester.org/christmas';
+    var done=function(){var t=document.getElementById('copytxt');t.textContent='Link copied!';setTimeout(function(){t.textContent='Copy link';},2200);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,done);}else{done();}
+  });}
+})();
+</script>
+</body></html>
