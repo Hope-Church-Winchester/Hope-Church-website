@@ -58,18 +58,24 @@ nav > a { flex-shrink: 0; }
    spacing and type size. Below that there is not enough room without the links
    colliding with the CTAs and squashing the logo, so the nav collapses to the
    hamburger. */
-@media (min-width: 1280px) {
-  nav { padding-left: 24px !important; padding-right: 24px !important; }
-  [data-navlinks] { gap: 14px !important; }
-  [data-navlinks] a { font-size: 15px !important; }
+@media (min-width: 1180px) {
+  nav { padding-left: 20px !important; padding-right: 20px !important; }
+  [data-navlinks] { gap: 12px !important; }
+  [data-navlinks] a { font-size: 14px !important; }
   [data-navctas] { gap: 6px !important; }
+  [data-navctas] a { padding-left: 16px !important; padding-right: 16px !important; }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1179px) {
   [data-navlinks] { display: none !important; }
   [data-navctas]  { display: none !important; }
   [data-hamburger] { display: inline-flex !important; }
 }
+
+/* With 11 links + the Give/ChurchSuite buttons the open hamburger menu can be
+   taller than the viewport. Let it scroll so the buttons at the bottom stay
+   reachable instead of falling off-screen. */
+[data-menu] { bottom: 0 !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
 
 /* ================= mobile: viewport < 1080px ================= */
 @media (max-width: 1079px) {
