@@ -38,6 +38,8 @@ relative links (e.g. `href="about.html"`).
 ├── site.js                   # shared interactions (mobile menu, nav-on-scroll,
 │                             #   hero parallax, scroll reveal) — progressive
 │                             #   enhancement; pages work fully without it
+├── nav-dd.css, nav-dd.js     # nav dropdowns (Get Involved / Watch & Read / About)
+│                             #   — desktop hover/click menus, mobile accordion
 ├── assets/                   # all photography and logos used by the site
 │   ├── partners/             #   partner / charity / mission logos
 │   ├── teaching/             #   sermon-series & teaching imagery
