@@ -1,0 +1,66 @@
+/* Nav dropdowns — Get Involved / Watch & Read / About.
+   Shared by every page (including christmas.html, which has its own nav CSS).
+   Behaviour lives in nav-dd.js. */
+
+/* ---- desktop (>=1180px): dropdown groups inside the top bar ---- */
+.nav-dd { position: relative; }
+.nav-dd-btn {
+  background: none; border: none; padding: 0; margin: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+  font-family: Inter, sans-serif; font-size: 16px; line-height: inherit;
+  color: rgba(255, 255, 255, 0.72);
+}
+@media (min-width: 1180px) { .nav-dd-btn { font-size: 14px; } }
+.nav-dd-btn svg { transition: transform .2s; flex-shrink: 0; }
+.nav-dd-btn:hover, .nav-dd.open .nav-dd-btn, .nav-dd.current .nav-dd-btn { color: #fff; }
+.nav-dd.open .nav-dd-btn svg { transform: rotate(180deg); }
+/* Same underline the old single-page links used for the current page. */
+.nav-dd.current .nav-dd-btn { padding-bottom: 3px; border-bottom: 2px solid #3F5CAA; }
+.nav-dd-btn:focus-visible, .m-dd-btn:focus-visible, .nav-dd-list a:focus-visible {
+  outline: 2px solid #A3C0E8; outline-offset: 3px; border-radius: 4px;
+}
+
+/* The panel's top padding bridges the gap so the pointer can travel from the
+   button to the list without the menu closing. */
+.nav-dd-panel { position: absolute; top: 100%; left: -16px; padding-top: 16px; display: none; z-index: 310; }
+.nav-dd.open .nav-dd-panel { display: block; }
+.nav-dd-list {
+  min-width: 180px; padding: 8px; border-radius: 14px;
+  background: rgba(8, 15, 30, 0.98);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.55);
+}
+nav .nav-dd .nav-dd-list a {
+  display: block; padding: 10px 14px; border-radius: 8px;
+  font-family: Inter, sans-serif; font-size: 15px !important; font-weight: 400;
+  color: rgba(255, 255, 255, 0.78); white-space: nowrap;
+}
+nav .nav-dd .nav-dd-list a:hover,
+nav .nav-dd .nav-dd-list a:focus-visible,
+nav .nav-dd .nav-dd-list a[aria-current="page"] { background: rgba(255, 255, 255, 0.08); color: #fff; }
+
+/* ---- mobile / tablet (<1180px): tap-to-expand groups in the hamburger menu ---- */
+[data-menu] { overflow-y: auto; }
+.m-dd-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  background: none; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 13px 0; cursor: pointer; text-align: left;
+  font-family: Inter, sans-serif; font-size: 22px; color: rgba(255, 255, 255, 0.8);
+}
+.m-dd-btn svg { transition: transform .2s; flex-shrink: 0; }
+.m-dd.open .m-dd-btn svg { transform: rotate(180deg); }
+.m-dd.current .m-dd-btn { color: #fff; }
+.m-dd-panel { display: none; }
+.m-dd.open .m-dd-panel { display: block; }
+[data-menu] .m-dd-panel a {
+  display: block; padding: 11px 0 11px 18px;
+  font-family: Inter, sans-serif; font-size: 19px; font-weight: 400;
+  color: rgba(255, 255, 255, 0.68);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+[data-menu] .m-dd-panel a[aria-current="page"] { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-dd-btn svg, .m-dd-btn svg { transition: none; }
+}
